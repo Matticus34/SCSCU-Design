@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 1: Stakeholder Negotiation & Scope Management - MASTER PRESENTATION</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .presentation-container {
+            width: 100%;
+            max-width: 1200px;
+            height: 675px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            padding: 60px 80px;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .slide-number {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 14px;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        h1 {
+            font-size: 48px;
+            color: #1e293b;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 36px;
+            color: #1e293b;
+            margin-bottom: 30px;
+            line-height: 1.3;
+        }
+
+        .subtitle {
+            font-size: 24px;
+            color: #475569;
+            margin-bottom: 40px;
+            line-height: 1.4;
+        }
+
+        .course-info {
+            font-size: 18px;
+            color: #64748b;
+            margin-bottom: 10px;
+        }
+
+        .institution {
+            font-size: 16px;
+            color: #94a3b8;
+            font-style: italic;
+            margin-top: 30px;
+        }
+
+        .content-section {
+            margin-bottom: 30px;
+        }
+
+        .content-section h3 {
+            font-size: 28px;
+            color: #3b82f6;
+            margin-bottom: 15px;
+        }
+
+        .bullet-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .bullet-list li {
+            font-size: 20px;
+            color: #334155;
+            margin-bottom: 15px;
+            padding-left: 35px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .bullet-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .column {
+            padding: 20px;
+        }
+
+        .highlight-box {
+            background: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .highlight-box p {
+            font-size: 18px;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .stat-box .number {
+            font-size: 64px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-box .label {
+            font-size: 20px;
+            opacity: 0.9;
+        }
+
+        .navigation {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: #2563eb;
+        }
+
+        .nav-button:disabled {
+            background: #cbd5e1;
+            cursor: not-allowed;
+        }
+
+        .slide-indicator {
+            display: flex;
+            gap: 8px;
+        }
+
+        .indicator-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #cbd5e1;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .indicator-dot.active {
+            background: #3b82f6;
+        }
+
+        .key-concept {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .key-concept-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #92400e;
+            margin-bottom: 10px;
+        }
+
+        .key-concept-text {
+            font-size: 18px;
+            color: #451a03;
+            line-height: 1.6;
+        }
+
+        .slide-1 {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .slide-1 h1 {
+            color: white;
+            font-size: 56px;
+        }
+
+        .slide-1 .subtitle {
+            color: #e0e7ff;
+            font-size: 28px;
+        }
+
+        .slide-1 .course-info {
+            color: #bfdbfe;
+        }
+
+        .slide-1 .institution {
+            color: #93c5fd;
+        }
+
+        @media (max-width: 768px) {
+            .presentation-container {
+                height: auto;
+                min-height: 600px;
+            }
+
+            .slide {
+                padding: 40px 30px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Slide 1: Title Slide -->
+        <div class="slide slide-1 active">
+            <h1>Negotiating Scope & Managing Stakeholder Relationships</h1>
+            <p class="subtitle">Essential Skills for Project Management Success</p>
+            <div style="margin-top: 50px;">
+                <p class="course-info">Project Management Professional Development</p>
+                <p class="course-info">Duration: 90-120 minutes</p>
+                <p class="institution">Southern Connecticut State University<br>Office of Workforce, Lifelong Learning</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: Module Overview -->
+        <div class="slide">
+            <div class="slide-number">Slide 2 of 41</div>
+            <h2>Why This Module Matters</h2>
+            <div class="highlight-box">
+                <p><strong>The Reality:</strong> Even the most well-planned projects face scope negotiations. Stakeholders may push for additional features, request timeline adjustments, or challenge resource allocations.</p>
+            </div>
+            <div class="content-section">
+                <h3>What You'll Learn</h3>
+                <ul class="bullet-list">
+                    <li>Analyze stakeholder positions using strategic frameworks</li>
+                    <li>Apply proven influence techniques in negotiations</li>
+                    <li>Build coalitions to gain support for project positions</li>
+                    <li>Navigate scope changes while maintaining relationships</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 3: Learning Objectives -->
+        <div class="slide">
+            <div class="slide-number">Slide 3 of 41</div>
+            <h2>Learning Objectives</h2>
+            <p style="font-size: 20px; color: #475569; margin-bottom: 30px;">By the end of this module, you will be able to:</p>
+            <div class="two-column">
+                <div class="column">
+                    <ul class="bullet-list">
+                        <li>Analyze stakeholder positions using power-interest grids</li>
+                        <li>Apply Dr. Conger's four-step influence framework</li>
+                        <li>Construct mutually beneficial solutions</li>
+                        <li>Evaluate scope changes using the triple constraint model</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <ul class="bullet-list">
+                        <li>Develop coalition-building strategies</li>
+                        <li>Articulate in-scope vs. out-of-scope items</li>
+                        <li>Negotiate scope adjustments professionally</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: The Challenge of Scope Negotiation -->
+        <div class="slide">
+            <div class="slide-number">Slide 4 of 41</div>
+            <h2>The Challenge: Common Negotiation Scenarios</h2>
+            <div class="content-section">
+                <h3>Project Elements Requiring Negotiation</h3>
+                <ul class="bullet-list">
+                    <li><strong>Scope:</strong> "Can we add just one more feature?"</li>
+                    <li><strong>Timeline:</strong> "We need this two weeks earlier"</li>
+                    <li><strong>Budget:</strong> "Can we do this for 20% less?"</li>
+                    <li><strong>Resources:</strong> "I need two more team members"</li>
+                    <li><strong>Quality Standards:</strong> "This level of testing seems excessive"</li>
+                </ul>
+            </div>
+            <div class="key-concept">
+                <div class="key-concept-title">Key Insight</div>
+                <div class="key-concept-text">These requests often come from legitimate business concerns. Your role isn't to say "no" automatically—it's to facilitate informed decision-making about trade-offs.</div>
+            </div>
+        </div>
+
+        <!-- Slide 5: The Cost of Poor Stakeholder Management -->
+        <div class="slide">
+            <div class="slide-number">Slide 5 of 41</div>
+            <h2>Why Stakeholder Management Skills Matter</h2>
+            <div class="two-column">
+                <div class="column">
+                    <div class="stat-box">
+                        <div class="number">70%</div>
+                        <div class="label">of projects fail due to poor stakeholder engagement</div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="stat-box">
+                        <div class="number">#1</div>
+                        <div class="label">cause of scope creep: misalignment with stakeholders</div>
+                    </div>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 30px;">
+                <p><strong>The Good News:</strong> Stakeholder management and negotiation are learnable skills. This module provides practical frameworks you can apply immediately in your projects.</p>
+            </div>
+        </div>
+
+        <!-- Slide 6: What is Stakeholder Management? -->
+        <div class="slide">
+            <div class="slide-number">Slide 6 of 41</div>
+            <h2>Stakeholder Management: The Foundation</h2>
+            <div class="highlight-box">
+                <p><strong>Definition:</strong> Stakeholder management is the process of maintaining good relationships with the people who have the most influence on your work.</p>
+            </div>
+            <div class="content-section">
+                <h3>Why It's Critical</h3>
+                <ul class="bullet-list">
+                    <li>Encourages open communication and teamwork</li>
+                    <li>Builds trust among project members</li>
+                    <li>Prevents misalignment on project goals</li>
+                    <li>Reduces conflicts and surprises during execution</li>
+                </ul>
+            </div>
+            <div class="key-concept">
+                <div class="key-concept-title">Key Principle</div>
+                <div class="key-concept-text">Without effective stakeholder management, even technically sound projects are less likely to succeed. People problems sink more projects than technical problems.</div>
+            </div>
+        </div>
+
+        <!-- Slide 7: The Stakeholder Analysis Process -->
+        <div class="slide">
+            <div class="slide-number">Slide 7 of 41</div>
+            <h2>Understanding Your Stakeholders</h2>
+            <p style="font-size: 20px; color: #475569; margin-bottom: 25px;">A stakeholder analysis helps you answer critical questions:</p>
+            <div class="two-column">
+                <div class="column">
+                    <div style="background: #eff6ff; padding: 25px; border-radius: 8px; height: 100%;">
+                        <h3 style="color: #1e40af; margin-bottom: 15px; font-size: 22px;">Who are they?</h3>
+                        <ul class="bullet-list" style="margin-top: 15px;">
+                            <li style="font-size: 18px;">Names and roles</li>
+                            <li style="font-size: 18px;">Organizational position</li>
+                            <li style="font-size: 18px;">Reporting relationships</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <div style="background: #eff6ff; padding: 25px; border-radius: 8px; height: 100%;">
+                        <h3 style="color: #1e40af; margin-bottom: 15px; font-size: 22px;">What matters to them?</h3>
+                        <ul class="bullet-list" style="margin-top: 15px;">
+                            <li style="font-size: 18px;">Priorities and goals</li>
+                            <li style="font-size: 18px;">Concerns and pain points</li>
+                            <li style="font-size: 18px;">Success criteria</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 25px;">
+                <p><strong>Remember:</strong> Understanding who your stakeholders are and what they care about is the first step to effective negotiation.</p>
+            </div>
+        </div>
+
+        <!-- Slide 8: The Power-Interest Grid -->
+        <div class="slide">
+            <div class="slide-number">Slide 8 of 41</div>
+            <h2>Power-Interest Grid Framework</h2>
+            <p style="font-size: 20px; color: #475569; margin-bottom: 20px;">Map stakeholders based on two dimensions:</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 15px; margin: 30px 0; height: 350px;">
+                <div style="background: #fee2e2; padding: 20px; border-radius: 8px; border: 2px solid #dc2626;">
+                    <div style="font-weight: bold; font-size: 18px; color: #7f1d1d; margin-bottom: 10px;">HIGH POWER<br>HIGH INTEREST</div>
+                    <div style="font-size: 16px; color: #991b1b; line-height: 1.5;">
+                        <strong>Manage Closely</strong><br>
+                        Key decision makers. Keep fully engaged and informed. Prioritize their needs.
+                    </div>
+                </div>
+                <div style="background: #fef3c7; padding: 20px; border-radius: 8px; border: 2px solid #f59e0b;">
+                    <div style="font-weight: bold; font-size: 18px; color: #78350f; margin-bottom: 10px;">HIGH POWER<br>LOW INTEREST</div>
+                    <div style="font-size: 16px; color: #92400e; line-height: 1.5;">
+                        <strong>Keep Satisfied</strong><br>
+                        Influential but not deeply invested. Keep informed, don't overwhelm.
+                    </div>
+                </div>
+                <div style="background: #dbeafe; padding: 20px; border-radius: 8px; border: 2px solid #3b82f6;">
+                    <div style="font-weight: bold; font-size: 18px; color: #1e3a8a; margin-bottom: 10px;">LOW POWER<br>HIGH INTEREST</div>
+                    <div style="font-size: 16px; color: #1e40af; line-height: 1.5;">
+                        <strong>Keep Informed</strong><br>
+                        Engaged and affected. Regular updates. May provide valuable input.
+                    </div>
+                </div>
+                <div style="background: #f3f4f6; padding: 20px; border-radius: 8px; border: 2px solid #6b7280;">
+                    <div style="font-weight: bold; font-size: 18px; color: #1f2937; margin-bottom: 10px;">LOW POWER<br>LOW INTEREST</div>
+                    <div style="font-size: 16px; color: #374151; line-height: 1.5;">
+                        <strong>Monitor</strong><br>
+                        Minimal engagement needed. General communications sufficient.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Understanding Stakeholder Motivations -->
+        <div class="slide">
+            <div class="slide-number">Slide 9 of 41</div>
+            <h2>Understanding Stakeholder Motivations</h2>
+            <p style="font-size: 20px; color: #475569; margin-bottom: 25px;">Not all resistance comes from the same place. Identify the underlying driver:</p>
+            <div class="content-section">
+                <div style="background: #eff6ff; padding: 20px; border-left: 4px solid #3b82f6; margin-bottom: 15px; border-radius: 4px;">
+                    <h3 style="color: #1e40af; margin-bottom: 10px; font-size: 22px;">💰 Budgetary Motivations</h3>
+                    <p style="font-size: 18px; color: #1e293b; line-height: 1.5;">Concern about costs, ROI, resource allocation, or financial constraints</p>
+                    <p style="font-size: 16px; color: #475569; margin-top: 8px; font-style: italic;">Example: CFO pushing back on adding features that increase project costs</p>
+                </div>
+                <div style="background: #fef3c7; padding: 20px; border-left: 4px solid #f59e0b; margin-bottom: 15px; border-radius: 4px;">
+                    <h3 style="color: #92400e; margin-bottom: 10px; font-size: 22px;">🔥 Interpersonal Motivations</h3>
+                    <p style="font-size: 18px; color: #1e293b; line-height: 1.5;">Worry about team dynamics, workload, training needs, or change resistance</p>
+                    <p style="font-size: 16px; color: #475569; margin-top: 8px; font-style: italic;">Example: Department head concerned about disrupting team workflow</p>
+                </div>
+                <div style="background: #fce7f3; padding: 20px; border-left: 4px solid #ec4899; margin-bottom: 15px; border-radius: 4px;">
+                    <h3 style="color: #831843; margin-bottom: 10px; font-size: 22px;">👯 Career-Focused Motivations</h3>
+                    <p style="font-size: 18px; color: #1e293b; line-height: 1.5;">Personal goals: maintaining position, seeking promotion, building reputation</p>
+                    <p style="font-size: 16px; color: #475569; margin-top: 8px; font-style: italic;">Example: Manager wanting visible project success to advance their career</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Preparing for Negotiations -->
+        <div class="slide">
+            <div class="slide-number">Slide 10 of 41</div>
+            <h2>Preparing for Stakeholder Negotiations</h2>
+            <div class="content-section">
+                <h3>Before You Enter the Conversation</h3>
+                <ul class="bullet-list">
+                    <li><strong>Complete your stakeholder analysis:</strong> Know who has power and interest</li>
+                    <li><strong>Identify motivations:</strong> What's driving their position?</li>
+                    <li><strong>Understand the project constraints:</strong> What's negotiable vs. fixed?</li>
+                    <li><strong>Gather your evidence:</strong> Data, benchmarks, and examples ready</li>
+                    <li><strong>Define your desired outcome:</strong> What does success look like?</li>
+                </ul>
+            </div>
+            <div class="key-concept" style="margin-top: 25px;">
+                <div class="key-concept-title">Critical Insight</div>
+                <div class="key-concept-text">Preparation is 80% of successful negotiation. The conversation is where you execute a strategy you've already developed.</div>
+            </div>
+        </div>
+
+        <!-- Slide 11: The Power of Influence -->
+        <div class="slide">
+            <div class="slide-number">Slide 11 of 41</div>
+            <h2>Influence: Your Primary Tool as PM</h2>
+            <div class="highlight-box">
+                <p><strong>Reality Check:</strong> As a project manager, you rarely have direct authority over all stakeholders and resources. Your ability to influence becomes your primary tool for success.</p>
+            </div>
+            <div class="content-section">
+                <h3>Why Influence Matters</h3>
+                <ul class="bullet-list">
+                    <li>You need buy-in from people you don't manage</li>
+                    <li>Decisions require consensus across departments</li>
+                    <li>Resources are controlled by other managers</li>
+                    <li>Stakeholders have competing priorities</li>
+                </ul>
+            </div>
+            <div class="key-concept">
+                <div class="key-concept-title">Key Principle</div>
+                <div class="key-concept-text">Influence without authority is a core competency for project managers. This is why soft skills often matter more than technical expertise.</div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Dr. Conger's Four Steps to Influence -->
+        <div class="slide">
+            <div class="slide-number">Slide 12 of 41</div>
+            <h2>Dr. Jay Conger's Influence Framework</h2>
+            <p style="font-size: 20px; color: #475569; margin-bottom: 25px;">Four sequential steps to effectively influence others:</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 20px; margin: 20px 0;">
+                <div style="background: #eff6ff; padding: 25px; border-radius: 8px; border-left: 5px solid #3b82f6;">
+                    <div style="font-size: 48px; color: #3b82f6; font-weight: bold; margin-bottom: 10px;">1</div>
+                    <h3 style="color: #1e40af; margin-bottom: 10px; font-size: 22px;">Establish Credibility</h3>
+                    <p style="font-size: 16px; color: #334155; line-height: 1.5;">Build trust through expertise, track record, and preparedness</p>
+                </div>
+                <div style="background: #fef3c7; padding: 25px; border-radius: 8px; border-left: 5px solid #f59e0b;">
+                    <div style="font-size: 48px; color: #f59e0b; font-weight: bold; margin-bottom: 10px;">2</div>
+                    <h3 style="color: #92400e; margin-bottom: 10px; font-size: 22px;">Frame for Common Ground</h3>
+                    <p style="font-size: 16px; color: #334155; line-height: 1.5;">Identify shared goals and mutual benefits</p>
+                </div>
+                <div style="background: #dcfce7; padding: 25px; border-radius: 8px; border-left: 5px solid #22c55e;">
+                    <div style="font-size: 48px; color: #22c55e; font-weight: bold; margin-bottom: 10px;">3</div>
+                    <h3 style="color: #166534; margin-bottom: 10px; font-size: 22px;">Provide Evidence</h3>
+                    <p style="font-size: 16px; color: #334155; line-height: 1.5;">Use data, examples, and concrete facts to support your position</p>
+                </div>
+                <div style="background: #fce7f3; padding: 25px; border-radius: 8px; border-left: 5px solid #ec4899;">
+                    <div style="font-size: 48px; color: #ec4899; font-weight: bold; margin-bottom: 10px;">4</div>
+                    <h3 style="color: #831843; margin-bottom: 10px; font-size: 22px;">Connect Emotionally</h3>
+                    <p style="font-size: 16px; color: #334155; line-height: 1.5;">Build relationships and demonstrate understanding of their concerns</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 13: Step 1 - Establish Credibility -->
+        <div class="slide">
+            <div class="slide-number">Slide 13 of 41</div>
+            <h2>Step 1: Establish Credibility</h2>
+            <p style="font-size: 20px; color: #475569; margin-bottom: 25px;">People listen to those they trust and respect. Build your credibility through:</p>
+            <div class="two-column">
+                <div class="column">
+                    <div style="background: #eff6ff; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                        <h3 style="color: #1e40af; margin-bottom: 12px; font-size: 20px;">Professional Expertise</h3>
+                        <ul class="bullet-list" style="margin-top: 10px;">
+                            <li style="font-size: 17px;">Demonstrate project management knowledge</li>
+                            <li style="font-size: 17px;">Reference industry standards</li>
+                            <li style="font-size: 17px;">Show understanding of the domain</li>
+                        </ul>
+                    </div>
+                    <div style="background: #eff6ff; padding: 20px; border-radius: 8px;">
+                        <h3 style="color: #1e40af; margin-bottom: 12px; font-size: 20px;">Track Record</h3>
+                        <ul class="bullet-list" style="margin-top: 10px;">
+                            <li style="font-size: 17px;">Reference past project successes</li>
+                            <li style="font-size: 17px;">Share relevant experience</li>
+                            <li style="font-size: 17px;">Acknowledge lessons learned</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <div style="background: #eff6ff; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                        <h3 style="color: #1e40af; margin-bottom: 12px; font-size: 20px;">Thorough Preparation</h3>
+                        <ul class="bullet-list" style="margin-top: 10px;">
+                            <li style="font-size: 17px;">Come with detailed analysis</li>
+                            <li style="font-size: 17px;">Anticipate questions</li>
+                            <li style="font-size: 17px;">Have data readily available</li>
+                        </ul>
+                    </div>
+                    <div style="background: #fef3c7; padding: 20px; border-radius: 8px;">
+                        <h3 style="color: #92400e; margin-bottom: 12px; font-size: 20px;">⚠️ Avoid These</h3>
+                        <ul style="list-style: none; padding: 0; margin-top: 10px;">
+                            <li style="font-size: 17px; color: #7f1d1d; margin-bottom: 8px;">✗ Being unprepared</li>
+                            <li style="font-size: 17px; color: #7f1d1d; margin-bottom: 8px;">✗ Making promises you can't keep</li>
+                            <li style="font-size: 17px; color: #7f1d1d;">✗ Dismissing valid concerns</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 14: Step 2 - Frame for Common Ground -->
+        <div class="slide">
+            <div class="slide-number">Slide 14 of 41</div>
+            <h2>Step 2: Frame for Common Ground</h2>
+            <p style="font-size: 20px; color: #475569; margin-bottom: 20px;">Start by emphasizing shared goals before addressing disagreements.</p>
+            <div class="highlight-box">
+                <p><strong>Psychology Principle:</strong> People are more receptive to compromise after being reminded of common ground. It shifts from "you vs. me" to "us vs. the problem."</p>
+            </div>
+            <div class="content-section" style="margin-top: 25px;">
+                <h3>Effective Opening Statements</h3>
+                <div style="background: #dcfce7; padding: 20px; border-left: 4px solid #22c55e; margin: 15px 0; border-radius: 4px;">
+                    <p style="font-size: 18px; color: #1e293b; line-height: 1.6;">"We're all here because we want to deliver a solution that improves customer experience and operational efficiency."</p>
+                </div>
+                <div style="background: #dcfce7; padding: 20px; border-left: 4px solid #22c55e; margin: 15px 0; border-radius: 4px;">
+                    <p style="font-size: 18px; color: #1e293b; line-height: 1.6;">"I know we all share the goal of completing this project on time and within budget."</p>
+                </div>
+                <div style="background: #dcfce7; padding: 20px; border-left: 4px solid #22c55e; margin: 15px 0; border-radius: 4px;">
+                    <p style="font-size: 18px; color: #1e293b; line-height: 1.6;">"Let's start by acknowledging what we agree on: quality and user satisfaction are our top priorities."</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 15: Practical Technique - Listen First -->
+        <div class="slide">
+            <div class="slide-number">Slide 15 of 41</div>
+            <h2>Negotiation Technique: Listen First</h2>
+            <div class="two-column">
+                <div class="column">
+                    <div style="background: #eff6ff; padding: 25px; border-radius: 8px; height: 100%;">
+                        <h3 style="color: #1e40af; margin-bottom: 15px; font-size: 22px;">The Principle</h3>
+                        <p style="font-size: 18px; color: #1e293b; line-height: 1.6; margin-bottom: 20px;">Hear stakeholder concerns completely before presenting your position.</p>
+                        <div style="background: white; padding: 15px; border-radius: 6px; margin-top: 15px;">
+                            <p style="font-size: 16px; color: #475569; font-weight: 600; margin-bottom: 10px;">Implementation:</p>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="font-size: 16px; color: #334155; margin-bottom: 8px;">✓ Ask open-ended questions</li>
+                                <li style="font-size: 16px; color: #334155; margin-bottom: 8px;">✓ Use active listening</li>
+                                <li style="font-size: 16px; color: #334155; margin-bottom: 8px;">✓ Take visible notes</li>
+                                <li style="font-size: 16px; color: #334155;">✓ Resist immediate rebuttals</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div style="background: #fef3c7; padding: 25px; border-radius: 8px; height: 100%;">
+                        <h3 style="color: #92400e; margin-bottom: 15px; font-size: 22px;">Why It Works</h3>
+                        <div style="background: white; padding: 15px; border-radius: 6px; margin-bottom: 15px;">
+                            <p style="font-size: 16px; color: #334155; line-height: 1.6;">When people feel heard, they become more open to hearing your perspective.</p>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 6px;">
+                            <p style="font-size: 16px; color: #334155; line-height: 1.6;">You may learn information that allows you to reframe your proposal more effectively.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="key-concept" style="margin-top: 20px;">
+                <div class="key-concept-title">Important Note</div>
+                <div class="key-concept-text">"Listening first" doesn't mean agreeing with everything. It means understanding the full landscape before proposing solutions.</div>
+            </div>
+        </div>
+
+        <!-- Slide 16: Step 3 - Provide Evidence -->
+        <div class="slide">
+            <div class="slide-number">Slide 16 of 41</div>
+            <h2>Step 3: Provide Evidence</h2>
+            <p style="font-size: 20px; color: #475569; margin-bottom: 25px;">Support your position with concrete data and examples.</p>
+            <div class="content-section">
+                <div style="background: #dcfce7; padding: 20px; border-left: 4px solid #22c55e; margin-bottom: 15px; border-radius: 4px;">
+                    <h3 style="color: #166534; margin-bottom: 10px; font-size: 20px;">📊 Data-Driven Decision Making</h3>
+                    <p style="font-size: 17px; color: #1e293b; line-height: 1.6;">Use metrics, statistics, and quantitative analysis to demonstrate impact and feasibility.</p>
+                </div>
+                <div style="background: #dcfce7; padding: 20px; border-left: 4px solid #22c55e; margin-bottom: 15px; border-radius: 4px;">
+                    <h3 style="color: #166534; margin-bottom: 10px; font-size: 20px;">🎯 Industry Benchmarks</h3>
+                    <p style="font-size: 17px; color: #1e293b; line-height: 1.6;">Reference standards and best practices from your industry or similar organizations.</p>
+                </div>
+                <div style="background: #dcfce7; padding: 20px; border-left: 4px solid #22c55e; margin-bottom: 15px; border-radius: 4px;">
+                    <h3 style="color: #166534; margin-bottom: 10px; font-size: 20px;">💼 Concrete Examples</h3>
+                    <p style="font-size: 17px; color: #1e293b; line-height: 1.6;">Share case studies from similar projects or documented outcomes from past experiences.</p>
+                </div>
+            </div>
+            <div class="key-concept">
+                <div class="key-concept-title">Pro Tip</div>
+                <div class="key-concept-text">Have your evidence organized and ready. Nothing undermines credibility faster than fumbling for data during a negotiation.</div>
+            </div>
+        </div>
+
+        <!-- Slide 17: Step 4 - Connect Emotionally -->
+        <div class="slide">
+            <div class="slide-number">Slide 17 of 41</div>
+            <h2>Step 4: Connect Emotionally</h2>
+            <div class="highlight-box">
+                <p><strong>Balance Required:</strong> Emotional connection builds trust and understanding, but must be balanced with professional boundaries and objective decision-making.</p>
+            </div>
+            <div class="two-column" style="margin-top: 25px;">
+                <div class="column">
+                    <h3 style="color: #3b82f6; margin-bottom: 15px; font-size: 22px;">How to Connect</h3>
+                    <ul class="bullet-list">
+                        <li style="font-size: 17px;">Acknowledge valid concerns genuinely</li>
+                        <li style="font-size: 17px;">Show empathy for their pressures</li>
+                        <li style="font-size: 17px;">Build relationships beyond transactions</li>
+                        <li style="font-size: 17px;">Demonstrate understanding of their perspective</li>
+                        <li style="font-size: 17px;">Use inclusive language ("we," "our team")</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <div style="background: #fef3c7; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+                        <h3 style="color: #92400e; margin-bottom: 12px; font-size: 20px;">Example Approach</h3>
+                        <p style="font-size: 16px; color: #1e293b; line-height: 1.6; font-style: italic;">"I understand the pressure you're under to reduce costs. As someone managing this project, I share your concern about budget. Let's work together to find a solution that protects both quality and costs."</p>
+                    </div>
+                    <div style="background: #fee2e2; padding: 20px; border-radius: 8px;">
+                        <h3 style="color: #7f1d1d; margin-bottom: 12px; font-size: 20px;">⚠️ Avoid</h3>
+                        <p style="font-size: 16px; color: #7f1d1d; line-height: 1.6;">Manipulation, false empathy, or overly personal relationships that could compromise objectivity.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 18: Ask Questions for Measurable Goals -->
+        <div class="slide">
+            <div class="slide-number">Slide 18 of 41</div>
+            <h2>Technique: Ask Questions to Define Measurable Goals</h2>
+            <div class="two-column">
+                <div class="column">
+                    <div style="background: #fee2e2; padding: 25px; border-radius: 8px; margin-bottom: 20px;">
+                        <h3 style="color: #7f1d1d; margin-bottom: 15px; font-size: 20px;">✗ The Problem</h3>
+                        <p style="font-size: 17px; color: #1e293b; line-height: 1.6; margin-bottom: 15px;">Vague stakeholder requests:</p>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="font-size: 16px; color: #7f1d1d; margin-bottom: 8px;">"Make it better"</li>
+                            <li style="font-size: 16px; color: #7f1d1d; margin-bottom: 8px;">"Faster service"</li>
+                            <li style="font-size: 16px; color: #7f1d1d; margin-bottom: 8px;">"Improve the experience"</li>
+                            <li style="font-size: 16px; color: #7f1d1d;">"Increase efficiency"</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <div style="background: #dcfce7; padding: 25px; border-radius: 8px; margin-bottom: 20px;">
+                        <h3 style="color: #166534; margin-bottom: 15px; font-size: 20px;">✓ The Solution</h3>
+                        <p style="font-size: 17px; color: #1e293b; line-height: 1.6; margin-bottom: 15px;">Targeted questions:</p>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="font-size: 16px; color: #166534; margin-bottom: 8px;">"What metrics would show success?"</li>
+                            <li style="font-size: 16px; color: #166534; margin-bottom: 8px;">"Can you give me an example?"</li>
+                            <li style="font-size: 16px; color: #166534; margin-bottom: 8px;">"How would we know we've met this goal?"</li>
+                            <li style="font-size: 16px; color: #166534;">"What would 'better' look like?"</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="highlight-box">
+                <p><strong>Result:</strong> "We want to reduce average customer checkout time by 30% within the first six weeks of tablet implementation" (Specific, Measurable, Time-bound)</p>
+            </div>
+        </div>
+
+        <!-- Slide 19: Explain Why Before What -->
+        <div class="slide">
+            <div class="slide-number">Slide 19 of 41</div>
+            <h2>Technique: Explain the "Why" Before the "What"</h2>
+            <p style="font-size: 20px; color: #475569; margin-bottom: 20px;">Persuasion sequence matters: reasoning first, request second.</p>
+            <div class="two-column">
+                <div class="column">
+                    <div style="background: #fee2e2; padding: 25px; border-radius: 8px; height: 100%;">
+                        <h3 style="color: #7f1d1d; margin-bottom: 15px; font-size: 20px;">✗ Ineffective Approach</h3>
+                        <div style="background: white; padding: 15px; border-radius: 6px;">
+                            <p style="font-size: 16px; color: #1e293b; line-height: 1.6; font-style: italic;">"We need to keep the scope limited to two restaurant locations and not expand to three."</p>
+                        </div>
+                        <p style="font-size: 15px; color: #7f1d1d; margin-top: 15px; line-height: 1.5;"><strong>Why it fails:</strong> Stakeholder evaluates the request before understanding the reasoning.</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div style="background: #dcfce7; padding: 25px; border-radius: 8px; height: 100%;">
+                        <h3 style="color: #166534; margin-bottom: 15px; font-size: 20px;">✓ Effective Approach</h3>
+                        <div style="background: white; padding: 15px; border-radius: 6px;">
+                            <p style="font-size: 16px; color: #1e293b; line-height: 1.6; font-style: italic;">"Based on our timeline analysis and resource availability, limiting the pilot to two locations allows us to ensure thorough staff training and gather high-quality data. With three locations, we'd spread our team too thin. For these reasons, I recommend we stick with two locations."</p>
+                        </div>
+                        <p style="font-size: 15px; color: #166534; margin-top: 15px; line-height: 1.5;"><strong>Why it works:</strong> If they agree with reasoning, they're more likely to accept the conclusion.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 20: Mutual Benefit Principle -->
+        <div class="slide">
+            <div class="slide-number">Slide 20 of 41</div>
+            <h2>The Principle of Mutual Benefit</h2>
+            <div class="highlight-box">
+                <p><strong>Definition:</strong> Mutual benefit is when all parties involved gain some kind of benefit or advantage. The goal is win-win, not win-lose.</p>
+            </div>
+            <div class="content-section" style="margin-top: 25px;">
+                <h3>Example Scenario</h3>
+                <div style="background: #fef3c7; padding: 20px; border-radius: 8px; margin: 15px 0;">
+                    <p style="font-size: 17px; color: #1e293b; line-height: 1.6;"><strong>Disagreement:</strong> You want to hire 5 people for the project. Stakeholder wants to limit headcount to 3.</p>
+                </div>
+                <h3 style="margin-top: 20px;">Mutually Beneficial Solutions</h3>
+                <div class="two-column" style="margin-top: 15px;">
+                    <div class="column">
+                        <div style="background: #dcfce7; padding: 20px; border-radius: 8px;">
+                            <p style="font-size: 17px; color: #1e293b; line-height: 1.6;"><strong>Option 1:</strong> Install automated software to handle some of the work, allowing for smaller team size while maintaining output.</p>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div style="background: #dcfce7; padding: 20px; border-radius: 8px;">
+                            <p style="font-size: 17px; color: #1e293b; line-height: 1.6;"><strong>Option 2:</strong> Adjust timeline or expectations so fewer people can accomplish goals without being overworked.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="key-concept" style="margin-top: 20px;">
+                <div class="key-concept-title">Remember</div>
+                <div class="key-concept-text">Reach solutions that maximize benefits, minimize losses, and are fair for all. Brainstorm multiple options that meet this criteria.</div>
+            </div>
+        </div>
+
+        <!-- Slide 21: Coalition Building Strategy -->
+        <div class="slide">
+            <div class="slide-number">Slide 21 of 41</div>
+            <h2>Coalition Building: Amplifying Your Influence</h2>
+            <div class="highlight-box">
+                <p><strong>Definition:</strong> A coalition is a temporary alliance or partnering of individuals or groups to achieve a common purpose. When multiple people advocate together, they exert more influence than acting alone.</p>
+            </div>
+            <div class="content-section" style="margin-top: 25px;">
+                <h3>Why Coalitions Matter for PMs</h3>
+                <ul class="bullet-list">
+                    <li>Leverage credibility and influence of others</li>
+                    <li>Demonstrate broader support for your position</li>
+                    <li>Access diverse expertise and perspectives</li>
+                    <li>Build relationships across organizational boundaries</li>
+                </ul>
+            </div>
+            <div class="key-concept" style="margin-top: 25px;">
+                <div class="key-concept-title">Key Insight</div>
+                <div class="key-concept-text">As a PM, you often need buy-in but lack formal authority. Coalition-building lets you influence through collective advocacy rather than individual persuasion.</div>
+            </div>
+        </div>
+
+        <!-- Slide 22: Selecting Coalition Members -->
+        <div class="slide">
+            <div class="slide-number">Slide 22 of 41</div>
+            <h2>Strategic Coalition Member Selection</h2>
+            <p style="font-size: 20px; color: #475569; margin-bottom: 20px;">Not everyone should be in your coalition. Select strategically:</p>
+            <div class="two-column">
+                <div class="column">
+                    <div style="background: #eff6ff; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+                        <h3 style="color: #1e40af; margin-bottom: 12px; font-size: 20px;">Selection Criteria</h3>
+                        <ul class="bullet-list" style="margin-top: 10px;">
+                            <li style="font-size: 17px;"><strong>Expertise Alignment:</strong> Relevant knowledge</li>
+                            <li style="font-size: 17px;"><strong>Relationship Capital:</strong> Connections with decision-makers</li>
+                            <li style="font-size: 17px;"><strong>Vested Interest:</strong> Benefits from your outcome</li>
+                            <li style="font-size: 17px;"><strong>Organizational Influence:</strong> Support carries weight</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <div style="background: #fef3c7; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+                        <h3 style="color: #92400e; margin-bottom: 12px; font-size: 20px;">⚠️ Common Mistakes</h3>
+                        <ul style="list-style: none; padding: 0; margin-top: 10px;">
+                            <li style="font-size: 17px; color: #7f1d1d; margin-bottom: 10px;">✗ Only recruiting "yes people"</li>
+                            <li style="font-size: 17px; color: #7f1d1d; margin-bottom: 10px;">✗ Building coalitions that are too large</li>
+                            <li style="font-size: 17px; color: #7f1d1d; margin-bottom: 10px;">✗ Hiding your role in organizing</li>
+                            <li style="font-size: 17px; color: #7f1d1d;">✗ Not briefing coalition members</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 20px;">
+                <p><strong>Remember:</strong> Quality over quantity. 3-4 well-chosen allies are better than 10 marginal supporters.</p>
+            </div>
+        </div>
+
+        <!-- Slide 23: The Triple Constraint Model -->
+        <div class="slide">
+            <div class="slide-number">Slide 23 of 41</div>
+            <h2>The Triple Constraint Model (Iron Triangle)</h2>
+            <p style="font-size: 20px; color: #475569; margin-bottom: 25px;">Every project operates within three interconnected constraints:</p>
+            <div style="display: flex; justify-content: center; align-items: center; margin: 40px 0;">
+                <div style="position: relative; width: 500px; height: 350px;">
+                    <!-- Triangle -->
+                    <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 200px solid transparent; border-right: 200px solid transparent; border-bottom: 350px solid #eff6ff;"></div>
+                    
+                    <!-- Vertices -->
+                    <div style="position: absolute; top: -40px; left: 50%; transform: translateX(-50%); background: #3b82f6; color: white; padding: 15px 25px; border-radius: 8px; font-weight: bold; font-size: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                        SCOPE<br><span style="font-size: 14px; font-weight: normal;">What we deliver</span>
+                    </div>
+                    <div style="position: absolute; bottom: -20px; left: 20px; background: #f59e0b; color: white; padding: 15px 25px; border-radius: 8px; font-weight: bold; font-size: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                        TIME<br><span style="font-size: 14px; font-weight: normal;">When we deliver</span>
+                    </div>
+                    <div style="position: absolute; bottom: -20px; right: 20px; background: #22c55e; color: white; padding: 15px 25px; border-radius: 8px; font-weight: bold; font-size: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                        BUDGET<br><span style="font-size: 14px; font-weight: normal;">What it costs</span>
+                    </div>
+                    
+                    <!-- Center text -->
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -20%); text-align: center; font-size: 18px; color: #1e40af; font-weight: bold;">
+                        QUALITY
+                    </div>
+                </div>
+            </div>
+            <div class="key-concept">
+                <div class="key-concept-title">Critical Principle</div>
+                <div class="key-concept-text">Changing one constraint affects the others. Want more scope? Expect increased time or budget. Need faster delivery? Reduce scope or increase resources.</div>
+            </div>
+        </div>
+
+        <!-- Slide 24: Managing Scope Changes -->
+        <div class="slide">
+            <div class="slide-number">Slide 24 of 41</div>
+            <h2>Managing Scope Change Requests</h2>
+            <p style="font-size: 20px; color: #475569; margin-bottom: 20px;">When scope changes arrive (and they will), follow this framework:</p>
+            <div class="content-section">
+                <div style="background: #eff6ff; padding: 20px; border-left: 4px solid #3b82f6; margin-bottom: 15px; border-radius: 4px;">
+                    <h3 style="color: #1e40af; margin-bottom: 10px; font-size: 20px;">Step 1: Acknowledge & Document</h3>
+                    <p style="font-size: 17px; color: #1e293b; line-height: 1.6;">"Thank you for this idea. Let me work with the team to understand the full implications for timeline, budget, and resources so we can make an informed decision together."</p>
+                </div>
+                <div style="background: #fef3c7; padding: 20px; border-left: 4px solid #f59e0b; margin-bottom: 15px; border-radius: 4px;">
+                    <h3 style="color: #92400e; margin-bottom: 10px; font-size: 20px;">Step 2: Analyze Using Triple Constraint</h3>
+                    <p style="font-size: 17px; color: #1e293b; line-height: 1.6;">Calculate impacts on timeline (hours/days), budget (cost estimates), resources (people/expertise), and quality/risk (new challenges)</p>
+                </div>
+                <div style="background: #dcfce7; padding: 20px; border-left: 4px solid #22c55e; margin-bottom: 15px; border-radius: 4px;">
+                    <h3 style="color: #166534; margin-bottom: 10px; font-size: 20px;">Step 3: Present Options with Trade-offs</h3>
+                    <p style="font-size: 17px; color: #1e293b; line-height: 1.6;">Offer multiple alternatives with clear implications for each choice</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 25: Saying "No" Professionally -->
+        <div class="slide">
+            <div class="slide-number">Slide 25 of 41</div>
+            <h2>Saying "No" Professionally</h2>
+            <p style="font-size: 20px; color: #475569; margin-bottom: 20px;">Sometimes the right answer is declining a request. Here's how to do it while maintaining relationships:</p>
+            <div class="content-section">
+                <h3>The Professional "No" Structure</h3>
+                <div style="background: #eff6ff; padding: 25px; border-radius: 8px; margin: 20px 0;">
+                    <ol style="list-style-position: outside; padding-left: 25px; margin: 0;">
+                        <li style="font-size: 18px; color: #1e293b; line-height: 1.8; margin-bottom: 12px;"><strong>Acknowledge the merit</strong> of their idea or concern</li>
+                        <li style="font-size: 18px; color: #1e293b; line-height: 1.8; margin-bottom: 12px;"><strong>Provide context</strong> about constraints and impacts</li>
+                        <li style="font-size: 18px; color: #1e293b; line-height: 1.8; margin-bottom: 12px;"><strong>State your recommendation</strong> clearly and directly</li>
+                        <li style="font-size: 18px; color: #1e293b; line-height: 1.8; margin-bottom: 12px;"><strong>Explain the reasoning</strong> behind your position</li>
+                        <li style="font-size: 18px; color: #1e293b; line-height: 1.8; margin-bottom: 12px;"><strong>Offer alternatives</strong> when possible</li>
+                        <li style="font-size: 18px; color: #1e293b; line-height: 1.8;"><strong>Invite discussion</strong> to ensure understanding</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="key-concept">
+                <div class="key-concept-title">Remember</div>
+                <div class="key-concept-text">Saying "no" professionally and with solid reasoning often earns more respect than always saying "yes."</div>
+            </div>
+        </div>
+
+        <!-- Slide 26: Key Takeaways -->
+        <div class="slide">
+            <div class="slide-number">Slide 26 of 41</div>
+            <h2>Key Takeaways</h2>
+            <div class="content-section">
+                <ul class="bullet-list">
+                    <li><strong>Stakeholder management is continuous,</strong> not a one-time activity. Relationships need ongoing attention throughout the project lifecycle.</li>
+                    <li><strong>Influence without authority</strong> is a core PM competency. Master the four-step framework: credibility, common ground, evidence, emotional connection.</li>
+                    <li><strong>Preparation is 80% of negotiation success.</strong> Use stakeholder analysis, understand motivations, and gather evidence before conversations.</li>
+                    <li><strong>Seek mutual benefit</strong> in all negotiations. Win-win solutions preserve relationships and lead to better outcomes.</li>
+                    <li><strong>Coalition building amplifies your influence.</strong> Strategic partnerships help you achieve goals you couldn't accomplish alone.</li>
+                    <li><strong>The triple constraint is real.</strong> Changes to scope, time, or budget always affect the others. Make trade-offs explicit.</li>
+                    <li><strong>Documentation protects everyone.</strong> Record decisions, changes, and rationale with timestamps.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 27: Next Steps & Closing -->
+        <div class="slide">
+            <div class="slide-number">Slide 27 of 41</div>
+            <h2>Applying These Skills in Your Work</h2>
+            <div class="two-column">
+                <div class="column">
+                    <div style="background: #eff6ff; padding: 25px; border-radius: 8px; height: 100%;">
+                        <h3 style="color: #1e40af; margin-bottom: 15px; font-size: 22px;">Immediate Actions</h3>
+                        <ul class="bullet-list" style="margin-top: 10px;">
+                            <li style="font-size: 17px;">Create a stakeholder analysis for your current project</li>
+                            <li style="font-size: 17px;">Map stakeholders on a power-interest grid</li>
+                            <li style="font-size: 17px;">Practice the "listen first" technique in your next meeting</li>
+                            <li style="font-size: 17px;">Document an upcoming scope negotiation using the frameworks</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <div style="background: #dcfce7; padding: 25px; border-radius: 8px; height: 100%;">
+                        <h3 style="color: #166534; margin-bottom: 15px; font-size: 22px;">Continue Learning</h3>
+                        <ul class="bullet-list" style="margin-top: 10px;">
+                            <li style="font-size: 17px;">Practice these techniques in low-stakes situations first</li>
+                            <li style="font-size: 17px;">Observe experienced PMs during negotiations</li>
+                            <li style="font-size: 17px;">Reflect on what works in your organizational culture</li>
+                            <li style="font-size: 17px;">Build your personal negotiation toolkit over time</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <div style="font-size: 28px; color: #3b82f6; font-weight: bold; margin-bottom: 15px;">
+                    Questions & Discussion
+                </div>
+                <p style="font-size: 18px; color: #64748b;">
+                    Thank you for your engagement with this material!
+                </p>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="slide-number">Slide 28 of 41</div>
+            <h2>The SMART Goals Framework</h2>
+            <div class="highlight-box">
+                <p><strong>Why SMART Goals Matter:</strong> Clear, measurable goals prevent scope creep, align stakeholder expectations, and provide objective criteria for project success.</p>
+            </div>
+            <div style="margin: 30px 0;">
+                <div style="background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; padding: 40px; border-radius: 12px; text-align: center;">
+                    <h1 style="color: white; font-size: 64px; margin-bottom: 20px; letter-spacing: 8px;">SMART</h1>
+                    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; margin-top: 30px;">
+                        <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px;">
+                            <div style="font-size: 28px; font-weight: bold; margin-bottom: 5px;">S</div>
+                            <div style="font-size: 16px;">Specific</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px;">
+                            <div style="font-size: 28px; font-weight: bold; margin-bottom: 5px;">M</div>
+                            <div style="font-size: 16px;">Measurable</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px;">
+                            <div style="font-size: 28px; font-weight: bold; margin-bottom: 5px;">A</div>
+                            <div style="font-size: 16px;">Attainable</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px;">
+                            <div style="font-size: 28px; font-weight: bold; margin-bottom: 5px;">R</div>
+                            <div style="font-size: 16px;">Relevant</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px;">
+                            <div style="font-size: 28px; font-weight: bold; margin-bottom: 5px;">T</div>
+                            <div style="font-size: 16px;">Time-bound</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="key-concept">
+                <div class="key-concept-title">Connection to Stakeholder Management</div>
+                <div class="key-concept-text">SMART goals transform vague stakeholder requests into clear, negotiable objectives. They provide the foundation for project charters and scope agreements.</div>
+            </div>
+        </div>
+
+        <!-- Slide 29: SMART Goals Breakdown - Part 1 -->
+        <div class="slide">
+            <div class="slide-number">Slide 29 of 41</div>
+            <h2>SMART Goals Breakdown - Part 1</h2>
+            <div class="content-section">
+                <div style="background: #eff6ff; padding: 25px; border-left: 4px solid #3b82f6; margin-bottom: 20px; border-radius: 4px;">
+                    <h3 style="color: #1e40af; margin-bottom: 12px; font-size: 24px;">S - Specific</h3>
+                    <p style="font-size: 18px; color: #1e293b; line-height: 1.6; margin-bottom: 12px;">Clear and detailed, answering key questions:</p>
+                    <ul style="list-style: none; padding: 0; margin-top: 10px;">
+                        <li style="font-size: 17px; color: #334155; margin-bottom: 8px;">• What am I aiming to accomplish?</li>
+                        <li style="font-size: 17px; color: #334155; margin-bottom: 8px;">• Who is involved?</li>
+                        <li style="font-size: 17px; color: #334155; margin-bottom: 8px;">• Where will this take place?</li>
+                        <li style="font-size: 17px; color: #334155;">• What are the requirements and constraints?</li>
+                    </ul>
+                    <div style="background: white; padding: 15px; border-radius: 6px; margin-top: 15px;">
+                        <p style="font-size: 16px; color: #475569; font-style: italic;"><strong>Tip:</strong> Look for subjective words like "bigger," "better," "faster" and replace them with concrete terms.</p>
+                    </div>
+                </div>
+                
+                <div style="background: #fef3c7; padding: 25px; border-left: 4px solid #f59e0b; margin-bottom: 20px; border-radius: 4px;">
+                    <h3 style="color: #92400e; margin-bottom: 12px; font-size: 24px;">M - Measurable</h3>
+                    <p style="font-size: 18px; color: #1e293b; line-height: 1.6; margin-bottom: 12px;">Quantifiable metrics and success criteria:</p>
+                    <ul style="list-style: none; padding: 0; margin-top: 10px;">
+                        <li style="font-size: 17px; color: #334155; margin-bottom: 8px;">• How much? How many?</li>
+                        <li style="font-size: 17px; color: #334155; margin-bottom: 8px;">• How will I know when it's accomplished?</li>
+                        <li style="font-size: 17px; color: #334155;">• What indicators will show progress?</li>
+                    </ul>
+                    <div style="background: white; padding: 15px; border-radius: 6px; margin-top: 15px;">
+                        <p style="font-size: 16px; color: #475569; font-style: italic;"><strong>Tip:</strong> Use benchmarking—research how others in your industry measure success.</p>
+                    </div>
+                </div>
+
+                <div style="background: #dcfce7; padding: 25px; border-left: 4px solid #22c55e; border-radius: 4px;">
+                    <h3 style="color: #166534; margin-bottom: 12px; font-size: 24px;">A - Attainable</h3>
+                    <p style="font-size: 18px; color: #1e293b; line-height: 1.6; margin-bottom: 12px;">Challenging but realistic given resources:</p>
+                    <ul style="list-style: none; padding: 0; margin-top: 10px;">
+                        <li style="font-size: 17px; color: #334155; margin-bottom: 8px;">• Can it realistically be done?</li>
+                        <li style="font-size: 17px; color: #334155; margin-bottom: 8px;">• Do we have the time, resources, and people?</li>
+                        <li style="font-size: 17px; color: #334155;">• What constraints might prevent achievement?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 30: SMART Goals Breakdown - Part 2 -->
+        <div class="slide">
+            <div class="slide-number">Slide 30 of 41</div>
+            <h2>SMART Goals Breakdown - Part 2</h2>
+            <div class="content-section">
+                <div style="background: #fce7f3; padding: 30px; border-left: 4px solid #ec4899; margin-bottom: 25px; border-radius: 4px;">
+                    <h3 style="color: #831843; margin-bottom: 15px; font-size: 24px;">R - Relevant</h3>
+                    <p style="font-size: 18px; color: #1e293b; line-height: 1.6; margin-bottom: 15px;">Aligns with broader organizational goals:</p>
+                    <ul style="list-style: none; padding: 0; margin-top: 10px;">
+                        <li style="font-size: 17px; color: #334155; margin-bottom: 10px;">• Does this make sense for us as a company or project team?</li>
+                        <li style="font-size: 17px; color: #334155; margin-bottom: 10px;">• Does it align with other efforts and priorities?</li>
+                        <li style="font-size: 17px; color: #334155; margin-bottom: 10px;">• Is this the right time?</li>
+                        <li style="font-size: 17px; color: #334155;">• Does it match organizational OKRs or strategic objectives?</li>
+                    </ul>
+                    <div style="background: white; padding: 15px; border-radius: 6px; margin-top: 15px;">
+                        <p style="font-size: 16px; color: #475569;"><strong>Example:</strong> If your company's objective is "provide quick meals for working families," a relevant project goal might be "decrease customer checkout time by 10% in 6 weeks."</p>
+                    </div>
+                </div>
+                
+                <div style="background: #e0e7ff; padding: 30px; border-left: 4px solid #6366f1; border-radius: 4px;">
+                    <h3 style="color: #3730a3; margin-bottom: 15px; font-size: 24px;">T - Time-bound</h3>
+                    <p style="font-size: 18px; color: #1e293b; line-height: 1.6; margin-bottom: 15px;">Clear deadlines and milestones:</p>
+                    <ul style="list-style: none; padding: 0; margin-top: 10px;">
+                        <li style="font-size: 17px; color: #334155; margin-bottom: 10px;">• When should this be completed?</li>
+                        <li style="font-size: 17px; color: #334155; margin-bottom: 10px;">• What can I accomplish in 6 months? 6 weeks?</li>
+                        <li style="font-size: 17px; color: #334155;">• What milestones mark progress?</li>
+                    </ul>
+                    <div style="background: white; padding: 15px; border-radius: 6px; margin-top: 15px;">
+                        <p style="font-size: 16px; color: #475569;"><strong>Remember:</strong> Adding a deadline creates urgency and helps you track whether the goal is achievable within project constraints.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 31: Transforming Vague Goals into SMART Goals -->
+        <div class="slide">
+            <div class="slide-number">Slide 31 of 41</div>
+            <h2>Transforming Vague Goals into SMART Goals</h2>
+            <p style="font-size: 20px; color: #475569; margin-bottom: 25px;">See how SMART framework converts unclear requests into actionable objectives:</p>
+            <div class="two-column">
+                <div class="column">
+                    <div style="background: #fee2e2; padding: 25px; border-radius: 8px; height: 100%;">
+                        <h3 style="color: #7f1d1d; margin-bottom: 20px; font-size: 22px;">✗ Vague Goals</h3>
+                        <div style="background: white; padding: 15px; border-radius: 6px; margin-bottom: 12px;">
+                            <p style="font-size: 17px; color: #1e293b; line-height: 1.5;">"Improve customer service"</p>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 6px; margin-bottom: 12px;">
+                            <p style="font-size: 17px; color: #1e293b; line-height: 1.5;">"Increase sales"</p>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 6px; margin-bottom: 12px;">
+                            <p style="font-size: 17px; color: #1e293b; line-height: 1.5;">"Make the process faster"</p>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 6px;">
+                            <p style="font-size: 17px; color: #1e293b; line-height: 1.5;">"Better team communication"</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div style="background: #dcfce7; padding: 25px; border-radius: 8px; height: 100%;">
+                        <h3 style="color: #166534; margin-bottom: 20px; font-size: 22px;">✓ SMART Goals</h3>
+                        <div style="background: white; padding: 15px; border-radius: 6px; margin-bottom: 12px;">
+                            <p style="font-size: 16px; color: #1e293b; line-height: 1.5;">"Reduce average customer wait time by 25% within 90 days, measured by queue management system"</p>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 6px; margin-bottom: 12px;">
+                            <p style="font-size: 16px; color: #1e293b; line-height: 1.5;">"Increase Q2 sales revenue by 15% ($150K) through new digital marketing campaign"</p>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 6px; margin-bottom: 12px;">
+                            <p style="font-size: 16px; color: #1e293b; line-height: 1.5;">"Decrease order processing time from 48 hours to 24 hours by implementing automated workflow by June 30"</p>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 6px;">
+                            <p style="font-size: 16px; color: #1e293b; line-height: 1.5;">"Hold weekly 30-minute team sync meetings with 90%+ attendance throughout project lifecycle"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 32: Benchmarking and Industry Metrics -->
+        <div class="slide">
+            <div class="slide-number">Slide 32 of 41</div>
+            <h2>Benchmarking & Industry Metrics</h2>
+            <div class="highlight-box">
+                <p><strong>Benchmarking:</strong> Evaluating success against industry standards. When struggling to make goals measurable, research how others in your field quantify success.</p>
+            </div>
+            <div class="content-section" style="margin-top: 25px;">
+                <h3>Industry-Specific Success Metrics</h3>
+                <div style="background: #eff6ff; padding: 20px; border-left: 4px solid #3b82f6; margin: 15px 0; border-radius: 4px;">
+                    <h3 style="color: #1e40af; margin-bottom: 10px; font-size: 20px;">🍽️ Restaurant Industry</h3>
+                    <ul style="list-style: none; padding: 0; margin-top: 10px;">
+                        <li style="font-size: 17px; color: #334155; margin-bottom: 8px;">• <strong>Table turnover rate:</strong> Average time guests spend at table</li>
+                        <li style="font-size: 17px; color: #334155; margin-bottom: 8px;">• <strong>Prime cost:</strong> Labor cost + total cost of goods (food/drink)</li>
+                        <li style="font-size: 17px; color: #334155;">• <strong>Average check amount:</strong> Average spend per guest meal</li>
+                    </ul>
+                </div>
+                <div style="background: #fef3c7; padding: 20px; border-left: 4px solid #f59e0b; margin: 15px 0; border-radius: 4px;">
+                    <h3 style="color: #92400e; margin-bottom: 10px; font-size: 20px;">💻 Tech Industry</h3>
+                    <ul style="list-style: none; padding: 0; margin-top: 10px;">
+                        <li style="font-size: 17px; color: #334155; margin-bottom: 8px;">• <strong>Sprint velocity:</strong> Story points completed per sprint</li>
+                        <li style="font-size: 17px; color: #334155; margin-bottom: 8px;">• <strong>Deployment frequency:</strong> How often code is deployed</li>
+                        <li style="font-size: 17px; color: #334155;">• <strong>Mean time to recovery:</strong> Time to restore service after incident</li>
+                    </ul>
+                </div>
+                <div style="background: #dcfce7; padding: 20px; border-left: 4px solid #22c55e; margin: 15px 0; border-radius: 4px;">
+                    <h3 style="color: #166534; margin-bottom: 10px; font-size: 20px;">🛍️ Retail Industry</h3>
+                    <ul style="list-style: none; padding: 0; margin-top: 10px;">
+                        <li style="font-size: 17px; color: #334155; margin-bottom: 8px;">• <strong>Conversion rate:</strong> Percentage of visitors who purchase</li>
+                        <li style="font-size: 17px; color: #334155; margin-bottom: 8px;">• <strong>Average transaction value:</strong> Average purchase amount</li>
+                        <li style="font-size: 17px; color: #334155;">• <strong>Customer lifetime value:</strong> Total revenue per customer</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 33: SMART Goals in Stakeholder Negotiations -->
+        <div class="slide">
+            <div class="slide-number">Slide 33 of 41</div>
+            <h2>SMART Goals in Stakeholder Negotiations</h2>
+            <div class="content-section">
+                <h3>How SMART Goals Strengthen Negotiations</h3>
+                <ul class="bullet-list">
+                    <li><strong>Prevent scope creep:</strong> Measurable criteria make it clear when requests fall outside agreed-upon goals</li>
+                    <li><strong>Align expectations:</strong> Everyone knows exactly what success looks like</li>
+                    <li><strong>Create objective criteria:</strong> Removes subjectivity from project assessment</li>
+                    <li><strong>Support project charters:</strong> SMART goals form the foundation of formal project documentation</li>
+                    <li><strong>Enable productive negotiations:</strong> Concrete goals make trade-offs discussable</li>
+                </ul>
+            </div>
+            <div class="key-concept" style="margin-top: 25px;">
+                <div class="key-concept-title">Negotiation in Action</div>
+                <div class="key-concept-text">
+                    <strong>Stakeholder says:</strong> "I want this to be better."<br>
+                    <strong>PM responds:</strong> "Let's define what 'better' means in measurable terms. What metrics would show us we've succeeded?"<br>
+                    <strong>Result:</strong> SMART goal both parties can agree on and track objectively.
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 25px;">
+                <p><strong>Remember:</strong> The time invested in creating SMART goals during initiation saves countless hours resolving misalignments during execution.</p>
+            </div>
+        </div>
+
+<!-- ========================================================================== -->
+<!-- END OF SMART GOALS SLIDES                                                  -->
+<!-- After inserting, update:                                                   -->
+<!-- 1. Slide 26 number from "26 of 41" to "26 of 41"                         -->
+<!-- 2. Slide 27 number from "27 of 41" to "27 of 41"                         -->
+<!-- ========================================================================== -->
+
+        <div class="slide">
+            <div class="slide-number">Slide 34 of 41</div>
+            <h2>Defining Project Scope</h2>
+            <div class="highlight-box">
+                <p><strong>Project Scope:</strong> The boundaries of a project that define what is included and excluded from the work. Scope establishes clear expectations and prevents misalignment.</p>
+            </div>
+            <div class="content-section" style="margin-top: 30px;">
+                <h3>Why Scope Matters</h3>
+                <div class="two-column">
+                    <div class="column">
+                        <div style="background: #eff6ff; padding: 25px; border-radius: 8px; height: 100%;">
+                            <h3 style="color: #1e40af; margin-bottom: 15px; font-size: 20px;">✓¦ Clear Scope Provides:</h3>
+                            <ul class="bullet-list" style="margin-top: 10px;">
+                                <li style="font-size: 17px;">Shared understanding among stakeholders</li>
+                                <li style="font-size: 17px;">Framework for decision-making</li>
+                                <li style="font-size: 17px;">Protection against scope creep</li>
+                                <li style="font-size: 17px;">Basis for timeline and budget estimates</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div style="background: #fef3c7; padding: 25px; border-radius: 8px; height: 100%;">
+                            <h3 style="color: #92400e; margin-bottom: 15px; font-size: 20px;">⚠️ Without Clear Scope:</h3>
+                            <ul class="bullet-list" style="margin-top: 10px;">
+                                <li style="font-size: 17px;">Conflicting stakeholder expectations</li>
+                                <li style="font-size: 17px;">Continuous scope creep</li>
+                                <li style="font-size: 17px;">Budget and timeline overruns</li>
+                                <li style="font-size: 17px;">Team frustration and confusion</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="key-concept" style="margin-top: 25px;">
+                <div class="key-concept-title">Connection to Stakeholder Negotiations</div>
+                <div class="key-concept-text">Well-defined scope gives you objective criteria when stakeholders request changes. Instead of subjective discussions, you reference agreed-upon boundaries.</div>
+            </div>
+        </div>
+
+        <!-- Slide 35: In-Scope vs. Out-of-Scope -->
+        <div class="slide">
+            <div class="slide-number">Slide 35 of 41</div>
+            <h2>In-Scope vs. Out-of-Scope</h2>
+            <p style="font-size: 20px; color: #475569; margin-bottom: 25px;">Determining what's included requires strategic thinking and stakeholder alignment.</p>
+            <div class="content-section">
+                <h3 style="margin-bottom: 20px;">Critical Questions to Determine Scope</h3>
+                <div style="background: #eff6ff; padding: 25px; border-left: 4px solid #3b82f6; margin-bottom: 20px; border-radius: 4px;">
+                    <p style="font-size: 18px; color: #1e293b; line-height: 1.7; margin-bottom: 15px;"><strong>✓¦ What's needed to achieve the project goal?</strong></p>
+                    <p style="font-size: 17px; color: #475569; line-height: 1.6;">Only include deliverables and tasks that directly contribute to accomplishing SMART goals.</p>
+                </div>
+                <div style="background: #dcfce7; padding: 25px; border-left: 4px solid #22c55e; margin-bottom: 20px; border-radius: 4px;">
+                    <p style="font-size: 18px; color: #1e293b; line-height: 1.7; margin-bottom: 15px;"><strong>💬 Which project details are stakeholders aligned on?</strong></p>
+                    <p style="font-size: 17px; color: #475569; line-height: 1.6;">Use stakeholder analysis to identify areas of agreement and potential conflict.</p>
+                </div>
+                <div style="background: #fef3c7; padding: 25px; border-left: 4px solid #f59e0b; margin-bottom: 20px; border-radius: 4px;">
+                    <p style="font-size: 18px; color: #1e293b; line-height: 1.7; margin-bottom: 15px;"><strong>🔍 Do stakeholders disagree on any elements?</strong></p>
+                    <p style="font-size: 17px; color: #475569; line-height: 1.6;">Address disagreements early—don't leave ambiguity that creates problems later.</p>
+                </div>
+                <div style="background: #fee2e2; padding: 25px; border-left: 4px solid #ef4444; border-radius: 4px;">
+                    <p style="font-size: 18px; color: #1e293b; line-height: 1.7; margin-bottom: 15px;"><strong>🔧 What should be explicitly out-of-scope?</strong></p>
+                    <p style="font-size: 17px; color: #475569; line-height: 1.6;">Document what you're NOT doing to prevent future misunderstandings.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 36: Sauce & Spoon Example: Scope Definition -->
+        <div class="slide">
+            <div class="slide-number">Slide 36 of 41</div>
+            <h2>Example: Sauce & Spoon Tablet Rollout Scope</h2>
+            <div class="two-column">
+                <div class="column">
+                    <div style="background: #dcfce7; padding: 25px; border-radius: 8px; border: 3px solid #22c55e; height: 100%;">
+                        <h3 style="color: #166534; margin-bottom: 20px; font-size: 22px; text-align: center;">✓¦ IN-SCOPE</h3>
+                        <ul style="list-style: none; padding: 0; margin-top: 15px;">
+                            <li style="font-size: 17px; color: #1e293b; margin-bottom: 15px; padding: 12px; background: white; border-radius: 6px;">
+                                <strong>• Tablet Installation:</strong> Two pilot locations
+                            </li>
+                            <li style="font-size: 17px; color: #1e293b; margin-bottom: 15px; padding: 12px; background: white; border-radius: 6px;">
+                                <strong>• Staff Training:</strong> Initial training sessions for pilot restaurant employees
+                            </li>
+                            <li style="font-size: 17px; color: #1e293b; margin-bottom: 15px; padding: 12px; background: white; border-radius: 6px;">
+                                <strong>• Technical Support:</strong> Implementation team available during pilot phase
+                            </li>
+                            <li style="font-size: 17px; color: #1e293b; margin-bottom: 15px; padding: 12px; background: white; border-radius: 6px;">
+                                <strong>• Performance Metrics:</strong> Track order time, sales data, customer satisfaction
+                            </li>
+                            <li style="font-size: 17px; color: #1e293b; padding: 12px; background: white; border-radius: 6px;">
+                                <strong>• Timeline:</strong> Six-week pilot period
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <div style="background: #fee2e2; padding: 25px; border-radius: 8px; border: 3px solid #ef4444; height: 100%;">
+                        <h3 style="color: #991b1b; margin-bottom: 20px; font-size: 22px; text-align: center;">✗ OUT-OF-SCOPE</h3>
+                        <ul style="list-style: none; padding: 0; margin-top: 15px;">
+                            <li style="font-size: 17px; color: #1e293b; margin-bottom: 15px; padding: 12px; background: white; border-radius: 6px;">
+                                <strong>• Full Rollout:</strong> Expanding to all restaurant locations
+                            </li>
+                            <li style="font-size: 17px; color: #1e293b; margin-bottom: 15px; padding: 12px; background: white; border-radius: 6px;">
+                                <strong>• Custom Development:</strong> Building new software features
+                            </li>
+                            <li style="font-size: 17px; color: #1e293b; margin-bottom: 15px; padding: 12px; background: white; border-radius: 6px;">
+                                <strong>• Hardware Upgrades:</strong> Kitchen equipment or POS system changes
+                            </li>
+                            <li style="font-size: 17px; color: #1e293b; margin-bottom: 15px; padding: 12px; background: white; border-radius: 6px;">
+                                <strong>• Marketing Campaign:</strong> Customer-facing promotions about tablets
+                            </li>
+                            <li style="font-size: 17px; color: #1e293b; padding: 12px; background: white; border-radius: 6px;">
+                                <strong>• Menu Redesign:</strong> Updating menu items or pricing
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="key-concept" style="margin-top: 25px;">
+                <div class="key-concept-title">Pro Tip</div>
+                <div class="key-concept-text">Notice how out-of-scope items aren't "bad ideas"—they're just not part of THIS project. Clearly documenting them prevents stakeholders from assuming they're included.</div>
+            </div>
+        </div>
+
+        <!-- Slide 37: Project Benefits -->
+        <div class="slide">
+            <div class="slide-number">Slide 37 of 41</div>
+            <h2>Identifying Project Benefits</h2>
+            <div class="highlight-box">
+                <p><strong>Benefits:</strong> The expected gains of a project. These can be direct (monetary) or indirect (engagement, satisfaction, efficiency). Benefits must outweigh costs to justify project investment.</p>
+            </div>
+            <div class="content-section" style="margin-top: 30px;">
+                <div class="two-column">
+                    <div class="column">
+                        <div style="background: #dcfce7; padding: 25px; border-left: 4px solid #22c55e; border-radius: 4px; margin-bottom: 20px;">
+                            <h3 style="color: #166534; margin-bottom: 15px; font-size: 22px;">💵 Direct Benefits</h3>
+                            <p style="font-size: 17px; color: #1e293b; line-height: 1.6; margin-bottom: 15px;">Tangible, measurable financial gains:</p>
+                            <ul style="list-style: none; padding: 0; margin-top: 10px;">
+                                <li style="font-size: 16px; color: #334155; margin-bottom: 10px;">• Increased revenue/sales</li>
+                                <li style="font-size: 16px; color: #334155; margin-bottom: 10px;">• Reduced operating costs</li>
+                                <li style="font-size: 16px; color: #334155; margin-bottom: 10px;">• Time savings (measured in dollars)</li>
+                                <li style="font-size: 16px; color: #334155;">• Efficiency improvements with ROI</li>
+                            </ul>
+                        </div>
+                        <div style="background: #eff6ff; padding: 20px; border-radius: 8px;">
+                            <p style="font-size: 16px; color: #1e40af; font-weight: bold; margin-bottom: 8px;">Sauce & Spoon Example:</p>
+                            <p style="font-size: 15px; color: #334155; line-height: 1.6;">"Increase sales by estimated 10% through faster table turnover and reduced order errors"</p>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div style="background: #fef3c7; padding: 25px; border-left: 4px solid #f59e0b; border-radius: 4px; margin-bottom: 20px;">
+                            <h3 style="color: #92400e; margin-bottom: 15px; font-size: 22px;">📝 Indirect Benefits</h3>
+                            <p style="font-size: 17px; color: #1e293b; line-height: 1.6; margin-bottom: 15px;">Important but less quantifiable gains:</p>
+                            <ul style="list-style: none; padding: 0; margin-top: 10px;">
+                                <li style="font-size: 16px; color: #334155; margin-bottom: 10px;">• Improved customer satisfaction</li>
+                                <li style="font-size: 16px; color: #334155; margin-bottom: 10px;">• Enhanced brand reputation</li>
+                                <li style="font-size: 16px; color: #334155; margin-bottom: 10px;">• Better employee morale</li>
+                                <li style="font-size: 16px; color: #334155;">• Competitive advantage</li>
+                            </ul>
+                        </div>
+                        <div style="background: #fef3c7; padding: 20px; border-radius: 8px;">
+                            <p style="font-size: 16px; color: #92400e; font-weight: bold; margin-bottom: 8px;">Sauce & Spoon Example:</p>
+                            <p style="font-size: 15px; color: #334155; line-height: 1.6;">"Provide clear data on ordering patterns to guide future menu and operational decisions"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="key-concept" style="margin-top: 25px;">
+                <div class="key-concept-title">Connection to Stakeholder Negotiations</div>
+                <div class="key-concept-text">Emphasize benefits that matter most to specific stakeholders. CFO? Lead with direct financial benefits. Operations manager? Highlight efficiency and data insights.</div>
+            </div>
+        </div>
+
+        <!-- Slide 38: Project Costs & Budget -->
+        <div class="slide">
+            <div class="slide-number">Slide 38 of 41</div>
+            <h2>Understanding Project Costs</h2>
+            <div class="highlight-box">
+                <p><strong>Costs:</strong> The money spent on project tasks and resources. A project budget estimates the total amount of money allocated to complete the project. Listing costs helps stakeholders weigh benefits against required investment.</p>
+            </div>
+            <div class="content-section" style="margin-top: 25px;">
+                <h3>Common Cost Categories</h3>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 20px;">
+                    <div style="background: #eff6ff; padding: 20px; border-left: 4px solid #3b82f6; border-radius: 4px;">
+                        <h3 style="color: #1e40af; margin-bottom: 10px; font-size: 20px;">💼 Labor Costs</h3>
+                        <ul style="list-style: none; padding: 0; margin-top: 10px;">
+                            <li style="font-size: 16px; color: #334155; margin-bottom: 8px;">• Project team salaries/time</li>
+                            <li style="font-size: 16px; color: #334155; margin-bottom: 8px;">• Contractor/consultant fees</li>
+                            <li style="font-size: 16px; color: #334155;">• Training time for staff</li>
+                        </ul>
+                    </div>
+                    <div style="background: #fef3c7; padding: 20px; border-left: 4px solid #f59e0b; border-radius: 4px;">
+                        <h3 style="color: #92400e; margin-bottom: 10px; font-size: 20px;">🛠️ Materials & Resources</h3>
+                        <ul style="list-style: none; padding: 0; margin-top: 10px;">
+                            <li style="font-size: 16px; color: #334155; margin-bottom: 8px;">• Equipment/hardware purchases</li>
+                            <li style="font-size: 16px; color: #334155; margin-bottom: 8px;">• Software licenses</li>
+                            <li style="font-size: 16px; color: #334155;">• Supplies and materials</li>
+                        </ul>
+                    </div>
+                    <div style="background: #dcfce7; padding: 20px; border-left: 4px solid #22c55e; border-radius: 4px;">
+                        <h3 style="color: #166534; margin-bottom: 10px; font-size: 20px;">📝 Operational Costs</h3>
+                        <ul style="list-style: none; padding: 0; margin-top: 10px;">
+                            <li style="font-size: 16px; color: #334155; margin-bottom: 8px;">• Facilities/space rental</li>
+                            <li style="font-size: 16px; color: #334155; margin-bottom: 8px;">• Utilities and infrastructure</li>
+                            <li style="font-size: 16px; color: #334155;">• Maintenance/support</li>
+                        </ul>
+                    </div>
+                    <div style="background: #fce7f3; padding: 20px; border-left: 4px solid #ec4899; border-radius: 4px;">
+                        <h3 style="color: #831843; margin-bottom: 10px; font-size: 20px;">⏳ Time as a Cost</h3>
+                        <ul style="list-style: none; padding: 0; margin-top: 10px;">
+                            <li style="font-size: 16px; color: #334155; margin-bottom: 8px;">• Opportunity cost of resources</li>
+                            <li style="font-size: 16px; color: #334155; margin-bottom: 8px;">• Delayed time-to-market</li>
+                            <li style="font-size: 16px; color: #334155;">• Project duration impacts</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="key-concept" style="margin-top: 25px;">
+                <div class="key-concept-title">Cost-Benefit Analysis in the Charter</div>
+                <div class="key-concept-text">Including both benefits and costs in your project charter helps stakeholders visualize the investment in one place. The benefits should clearly outweigh the costs—if not, stakeholders may question whether the project is worth pursuing.</div>
+            </div>
+        </div>
+
+        <!-- Slide 39: The Project Charter's Role -->
+        <div class="slide">
+            <div class="slide-number">Slide 39 of 41</div>
+            <h2>The Project Charter: Bringing It All Together</h2>
+            <div class="highlight-box">
+                <p><strong>Project Charter:</strong> A formal document that clearly defines the project and outlines the necessary details to reach goals. It serves as the foundation for stakeholder alignment and scope management.</p>
+            </div>
+            <div class="content-section" style="margin-top: 25px;">
+                <h3>Key Components of a Project Charter</h3>
+                <div style="background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; padding: 30px; border-radius: 12px; margin-top: 20px;">
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                        <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 8px;">
+                            <div style="font-size: 36px; margin-bottom: 10px;">📋</div>
+                            <h4 style="color: white; margin-bottom: 10px; font-size: 18px;">Project Summary</h4>
+                            <p style="font-size: 15px; line-height: 1.5;">Brief overview of the project purpose and objectives</p>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 8px;">
+                            <div style="font-size: 36px; margin-bottom: 10px;">🏰</div>
+                            <h4 style="color: white; margin-bottom: 10px; font-size: 18px;">SMART Goals</h4>
+                            <p style="font-size: 15px; line-height: 1.5;">Specific, measurable, attainable, relevant, time-bound objectives</p>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 8px;">
+                            <div style="font-size: 36px; margin-bottom: 10px;">✓¦</div>
+                            <h4 style="color: white; margin-bottom: 10px; font-size: 18px;">Deliverables</h4>
+                            <p style="font-size: 15px; line-height: 1.5;">Tangible outcomes that enable goal achievement</p>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 8px;">
+                            <div style="font-size: 36px; margin-bottom: 10px;">📝</div>
+                            <h4 style="color: white; margin-bottom: 10px; font-size: 18px;">Scope</h4>
+                            <p style="font-size: 15px; line-height: 1.5;">In-scope and out-of-scope items clearly defined</p>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 8px;">
+                            <div style="font-size: 36px; margin-bottom: 10px;">💰</div>
+                            <h4 style="color: white; margin-bottom: 10px; font-size: 18px;">Benefits & Costs</h4>
+                            <p style="font-size: 15px; line-height: 1.5;">Expected gains weighed against required investment</p>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 8px;">
+                            <div style="font-size: 36px; margin-bottom: 10px;">💥</div>
+                            <h4 style="color: white; margin-bottom: 10px; font-size: 18px;">Stakeholder Analysis</h4>
+                            <p style="font-size: 15px; line-height: 1.5;">Understanding who to prioritize and how to communicate</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="key-concept" style="margin-top: 25px;">
+                <div class="key-concept-title">Why the Charter Matters</div>
+                <div class="key-concept-text">The charter is your negotiation reference point. When stakeholders request changes, you return to the charter to assess impact on agreed-upon goals, scope, timeline, and budget.</div>
+            </div>
+        </div>
+
+        <!-- Slide 40: Scope Negotiation in Practice -->
+        <div class="slide">
+            <div class="slide-number">Slide 40 of 41</div>
+            <h2>Scope Negotiation in Practice</h2>
+            <p style="font-size: 20px; color: #475569; margin-bottom: 25px;">Using your project charter and scope definition to navigate difficult conversations.</p>
+            <div class="content-section">
+                <div style="background: #fee2e2; padding: 25px; border-left: 4px solid #ef4444; border-radius: 4px; margin-bottom: 25px;">
+                    <h3 style="color: #991b1b; margin-bottom: 15px; font-size: 22px;">⚠ ️ Common Scope Challenges</h3>
+                    <ul class="bullet-list">
+                        <li><strong>Scope Creep:</strong> Gradual expansion of project scope without adjusting timeline/budget</li>
+                        <li><strong>Gold Plating:</strong> Adding unnecessary features stakeholders didn't request</li>
+                        <li><strong>Ambiguous Requirements:</strong> Unclear deliverables that allow different interpretations</li>
+                        <li><strong>Competing Priorities:</strong> Stakeholders with conflicting views on what's most important</li>
+                    </ul>
+                </div>
+
+                <h3 style="margin-bottom: 15px;">Negotiation Techniques for Scope Discussions</h3>
+                <div class="two-column">
+                    <div class="column">
+                        <div style="background: #dcfce7; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+                            <h4 style="color: #166534; margin-bottom: 10px; font-size: 18px;">1. Reference the Charter</h4>
+                            <p style="font-size: 16px; color: #334155; line-height: 1.6;">"Let's look at our agreed-upon scope in the charter. This request would add [X] to our deliverables."</p>
+                        </div>
+                        <div style="background: #eff6ff; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+                            <h4 style="color: #1e40af; margin-bottom: 10px; font-size: 18px;">2. Present Trade-Offs</h4>
+                            <p style="font-size: 16px; color: #334155; line-height: 1.6;">"To add this feature, we'd need to extend the timeline by 3 weeks OR remove [other deliverable]."</p>
+                        </div>
+                        <div style="background: #fef3c7; padding: 20px; border-radius: 8px;">
+                            <h4 style="color: #92400e; margin-bottom: 10px; font-size: 18px;">3. Acknowledge Value</h4>
+                            <p style="font-size: 16px; color: #334155; line-height: 1.6;">"That's a valuable idea. Let's evaluate it against our project goals to see if it fits this phase."</p>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div style="background: #fce7f3; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+                            <h4 style="color: #831843; margin-bottom: 10px; font-size: 18px;">4. Suggest Alternatives</h4>
+                            <p style="font-size: 16px; color: #334155; line-height: 1.6;">"While that's out-of-scope for the pilot, we could document it for Phase 2 consideration."</p>
+                        </div>
+                        <div style="background: #e0e7ff; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+                            <h4 style="color: #3730a3; margin-bottom: 10px; font-size: 18px;">5. Use Data</h4>
+                            <p style="font-size: 16px; color: #334155; line-height: 1.6;">"Based on our resource allocation, adding this would require an additional $15K and 120 hours."</p>
+                        </div>
+                        <div style="background: #fef3c7; padding: 20px; border-radius: 8px;">
+                            <h4 style="color: #92400e; margin-bottom: 10px; font-size: 18px;">6. Escalate When Needed</h4>
+                            <p style="font-size: 16px; color: #334155; line-height: 1.6;">"This is a significant scope change. Should we schedule a meeting with the project sponsor to decide?"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 41: Documentation Best Practices -->
+        <div class="slide">
+            <div class="slide-number">Slide 41 of 41</div>
+            <h2>Documenting Scope Decisions</h2>
+            <div class="highlight-box">
+                <p><strong>Critical Practice:</strong> Every scope discussion, decision, and change must be documented with timestamps and stakeholder agreement. Documentation protects everyone and prevents future disputes.</p>
+            </div>
+            <div class="content-section" style="margin-top: 30px;">
+                <h3>What to Document</h3>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 20px;">
+                    <div style="background: #eff6ff; padding: 25px; border-radius: 8px; border-left: 4px solid #3b82f6;">
+                        <h4 style="color: #1e40af; margin-bottom: 15px; font-size: 20px;">📝 Scope Discussions</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="font-size: 16px; color: #334155; margin-bottom: 10px;">• Date and participants</li>
+                            <li style="font-size: 16px; color: #334155; margin-bottom: 10px;">• Topic/request discussed</li>
+                            <li style="font-size: 16px; color: #334155; margin-bottom: 10px;">• Options presented</li>
+                            <li style="font-size: 16px; color: #334155;">• Decision reached</li>
+                        </ul>
+                    </div>
+                    <div style="background: #fef3c7; padding: 25px; border-radius: 8px; border-left: 4px solid #f59e0b;">
+                        <h4 style="color: #92400e; margin-bottom: 15px; font-size: 20px;">📊 Scope Changes</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="font-size: 16px; color: #334155; margin-bottom: 10px;">• What changed (before/after)</li>
+                            <li style="font-size: 16px; color: #334155; margin-bottom: 10px;">• Why the change was needed</li>
+                            <li style="font-size: 16px; color: #334155; margin-bottom: 10px;">• Impact on timeline/budget</li>
+                            <li style="font-size: 16px; color: #334155;">• Stakeholder approvals</li>
+                        </ul>
+                    </div>
+                    <div style="background: #dcfce7; padding: 25px; border-radius: 8px; border-left: 4px solid #22c55e;">
+                        <h4 style="color: #166534; margin-bottom: 15px; font-size: 20px;">✓¦ Agreements</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="font-size: 16px; color: #334155; margin-bottom: 10px;">• What was agreed upon</li>
+                            <li style="font-size: 16px; color: #334155; margin-bottom: 10px;">• Who agreed (names/roles)</li>
+                            <li style="font-size: 16px; color: #334155; margin-bottom: 10px;">• When agreement was reached</li>
+                            <li style="font-size: 16px; color: #334155;">• Next steps/action items</li>
+                        </ul>
+                    </div>
+                    <div style="background: #fee2e2; padding: 25px; border-radius: 8px; border-left: 4px solid #ef4444;">
+                        <h4 style="color: #991b1b; margin-bottom: 15px; font-size: 20px;">🔍 Declined Requests</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="font-size: 16px; color: #334155; margin-bottom: 10px;">• What was requested</li>
+                            <li style="font-size: 16px; color: #334155; margin-bottom: 10px;">• Why it was declined</li>
+                            <li style="font-size: 16px; color: #334155; margin-bottom: 10px;">• Alternative solutions offered</li>
+                            <li style="font-size: 16px; color: #334155;">• Stakeholder understanding</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="key-concept" style="margin-top: 25px;">
+                <div class="key-concept-title">Pro Tip: Communication Format</div>
+                <div class="key-concept-text">After scope discussions, send a follow-up email summarizing the conversation and decision. Ask stakeholders to confirm their agreement in writing. This creates a paper trail that protects both you and the stakeholders.</div>
+            </div>
+        </div>
+
+<!-- ========================================================================== -->
+<!-- END OF SCOPE MANAGEMENT FUNDAMENTALS SLIDES                                -->
+<!-- After inserting, update all previous slide numbers to reflect total of 41  -->
+<!-- Update navigation indicators and slide totals                              -->
+<!-- ========================================================================== -->
+
+        <!-- Section Navigation -->
+        <div style="position: absolute; top: 20px; left: 30px; z-index: 1000;">
+            <select id="sectionNav" onchange="jumpToSection(this.value)" style="
+                padding: 8px 12px;
+                font-size: 14px;
+                border: 2px solid #3b82f6;
+                border-radius: 6px;
+                background: white;
+                color: #1e293b;
+                cursor: pointer;
+                font-weight: 500;
+            ">
+                <option value="">Jump to Section...</option>
+                <option value="0">Introduction (Slides 1-3)</option>
+                <option value="3">Stakeholder Analysis (Slides 4-15)</option>
+                <option value="15">Negotiation Fundamentals (Slides 16-27)</option>
+                <option value="27">SMART Goals Framework (Slides 28-33)</option>
+                <option value="33">Scope Management (Slides 34-41)</option>
+            </select>
+        </div>
+
+        <!-- Navigation -->
+        <div class="navigation">
+            <button class="nav-button" id="prevBtn" onclick="changeSlide(-1)">←  Previous</button>
+            <div class="slide-indicator" id="slideIndicator"></div>
+            <button class="nav-button" id="nextBtn" onclick="changeSlide(1)">Next →</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        // Create slide indicators
+        const indicatorContainer = document.getElementById('slideIndicator');
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'indicator-dot';
+            if (i === 0) dot.classList.add('active');
+            dot.onclick = () => goToSlide(i);
+            indicatorContainer.appendChild(dot);
+        }
+
+        function showSlide(n) {
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+
+            const indicators = document.querySelectorAll('.indicator-dot');
+            indicators.forEach(indicator => {
+                indicator.classList.remove('active');
+            });
+
+            currentSlide = n;
+            if (currentSlide >= totalSlides) currentSlide = totalSlides - 1;
+            if (currentSlide < 0) currentSlide = 0;
+
+            slides[currentSlide].classList.add('active');
+            indicators[currentSlide].classList.add('active');
+
+            // Update button states
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
+
+        function goToSlide(n) {
+            showSlide(n);
+        }
+
+        function jumpToSection(slideIndex) {
+            if (slideIndex !== "") {
+                goToSlide(parseInt(slideIndex));
+                // Reset dropdown to default
+                document.getElementById('sectionNav').value = "";
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+        });
+
+        // Initialize
+        showSlide(0);
+    </script>
+</body>
+</html>
