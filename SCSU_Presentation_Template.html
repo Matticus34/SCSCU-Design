@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCSU Presentation Template</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            overflow: hidden;
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            background-color: #0A4C9B;
+            color: #FFFFFF;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .slide h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .slide h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .slide h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .slide p {
+            font-size: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .slide ul, .slide ol {
+            font-size: 1.5rem;
+            line-height: 2;
+            text-align: left;
+            max-width: 80%;
+        }
+
+        .learning-objectives {
+            display: none;
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 5px;
+            max-width: 30%;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        .speaker-notes {
+            display: none;
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 5px;
+            max-width: 30%;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        /* Navigation controls */
+        .nav-controls {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 1000;
+        }
+
+        .nav-controls button {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #FFFFFF;
+            border: 2px solid #FFFFFF;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-controls button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .slide.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Title Slide Placeholder -->
+    <div class="slide" id="slide-1">
+        <h1>[Title Slide Placeholder]</h1>
+        <p>[Subtitle/Institution]</p>
+
+        <div class="learning-objectives">
+            <strong>Learning Objectives:</strong>
+            <p>[Learning objectives for this slide]</p>
+        </div>
+
+        <div class="speaker-notes">
+            <strong>Speaker Notes:</strong>
+            <p>[Speaker notes for this slide]</p>
+        </div>
+    </div>
+
+    <!-- Slide 2: Content Slide Placeholder -->
+    <div class="slide hidden" id="slide-2">
+        <h2>[Content Slide Placeholder]</h2>
+        <p>[Content goes here]</p>
+
+        <div class="learning-objectives">
+            <strong>Learning Objectives:</strong>
+            <p>[Learning objectives for this slide]</p>
+        </div>
+
+        <div class="speaker-notes">
+            <strong>Speaker Notes:</strong>
+            <p>[Speaker notes for this slide]</p>
+        </div>
+    </div>
+
+    <!-- Slide 3: Content Slide Placeholder -->
+    <div class="slide hidden" id="slide-3">
+        <h2>[Content Slide Placeholder]</h2>
+        <p>[Content goes here]</p>
+
+        <div class="learning-objectives">
+            <strong>Learning Objectives:</strong>
+            <p>[Learning objectives for this slide]</p>
+        </div>
+
+        <div class="speaker-notes">
+            <strong>Speaker Notes:</strong>
+            <p>[Speaker notes for this slide]</p>
+        </div>
+    </div>
+
+    <!-- Navigation Controls -->
+    <div class="nav-controls">
+        <button onclick="previousSlide()">Previous</button>
+        <button onclick="nextSlide()">Next</button>
+        <button onclick="toggleNotes()">Toggle Notes</button>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = document.querySelectorAll('.slide').length;
+        let notesVisible = false;
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+            if (n > totalSlides) currentSlide = 1;
+            if (n < 1) currentSlide = totalSlides;
+
+            slides.forEach((slide, index) => {
+                if (index + 1 === currentSlide) {
+                    slide.classList.remove('hidden');
+                } else {
+                    slide.classList.add('hidden');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide++;
+            showSlide(currentSlide);
+        }
+
+        function previousSlide() {
+            currentSlide--;
+            showSlide(currentSlide);
+        }
+
+        function toggleNotes() {
+            notesVisible = !notesVisible;
+            const objectives = document.querySelectorAll('.learning-objectives');
+            const notes = document.querySelectorAll('.speaker-notes');
+
+            objectives.forEach(obj => {
+                obj.style.display = notesVisible ? 'block' : 'none';
+            });
+
+            notes.forEach(note => {
+                note.style.display = notesVisible ? 'block' : 'none';
+            });
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                previousSlide();
+            } else if (e.key === 'n' || e.key === 'N') {
+                toggleNotes();
+            }
+        });
+    </script>
+</body>
+</html>
