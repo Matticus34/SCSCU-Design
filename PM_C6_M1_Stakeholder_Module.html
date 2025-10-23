@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course 6 Module 1: Project Initiation and Stakeholder Management</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            overflow: hidden;
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            background-color: #0A4C9B;
+            color: #FFFFFF;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .slide h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .slide h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .slide h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .slide p {
+            font-size: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .slide ul, .slide ol {
+            font-size: 1.5rem;
+            line-height: 2;
+            text-align: left;
+            max-width: 80%;
+        }
+
+        .slide li {
+            margin-bottom: 0.8rem;
+        }
+
+        .learning-objectives {
+            display: none;
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 1rem;
+            border-radius: 5px;
+            max-width: 25%;
+            text-align: left;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .speaker-notes {
+            display: none;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 1rem;
+            border-radius: 5px;
+            max-width: 28%;
+            text-align: left;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .discussion-q {
+            display: none;
+            position: absolute;
+            bottom: 5rem;
+            left: 1rem;
+            background-color: rgba(255, 215, 0, 0.2);
+            border-left: 4px solid #FFD700;
+            padding: 1rem;
+            border-radius: 5px;
+            max-width: 30%;
+            text-align: left;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .bias-check {
+            display: none;
+            position: absolute;
+            bottom: 5rem;
+            right: 1rem;
+            background-color: rgba(255, 165, 0, 0.2);
+            border-left: 4px solid #FFA500;
+            padding: 1rem;
+            border-radius: 5px;
+            max-width: 30%;
+            text-align: left;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        /* Navigation controls */
+        .nav-controls {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 1000;
+        }
+
+        .nav-controls button {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #FFFFFF;
+            border: 2px solid #FFFFFF;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-controls button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .slide.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Strategic Thinking in Project Initiation -->
+    <div class="slide" id="slide-1">
+        <h2>Strategic Thinking in Project Initiation</h2>
+        <ul>
+            <li>Systematic analysis of documentation reveals actionable insights beyond stated requirements</li>
+            <li>Environmental assessment requires understanding industry standards, competitive pressures, and organizational dynamics</li>
+            <li>Stakeholder ecosystem mapping identifies both formal authority and informal influence networks</li>
+            <li>Critical thinking enables reading between the lines to uncover unstated assumptions and potential conflicts</li>
+            <li>Strategic synthesis transforms multiple data sources into informed decisions about resource allocation and project direction</li>
+        </ul>
+
+        <div class="learning-objectives">
+            <strong>Learning Objective:</strong>
+            <p>Analyze project documentation to extract key requirements, constraints, and success criteria that inform strategic decision-making and stakeholder engagement.</p>
+        </div>
+
+        <div class="speaker-notes">
+            <strong>Speaker Notes:</strong>
+            <p>Strategic thinking in project initiation directly aligns with PMP Domain 1 (People) and Domain 2 (Process). In workforce settings, this means project managers must synthesize information from diverse sources—business cases, stakeholder emails, organizational policies—to identify what's explicitly stated and what's implied. For example, when an executive requests "improved efficiency," strategic analysis requires researching industry benchmarks, interviewing stakeholders about their definition of efficiency, and identifying constraints like budget limits or regulatory requirements. This proactive analysis prevents scope creep and misalignment, which are primary causes of project failure. Encourage learners to develop the habit of creating stakeholder ecosystem maps early, documenting both formal reporting structures and informal influence networks that will impact project success.</p>
+        </div>
+
+        <div class="discussion-q">
+            <strong>Discussion Question:</strong>
+            <p>Reflect on a recent project in your workplace. What information was available in project documentation that you initially overlooked, and how did that oversight impact project execution or stakeholder relationships?</p>
+        </div>
+
+        <div class="bias-check">
+            <strong>Bias Check:</strong>
+            <p>Consider whose voices and perspectives might be excluded when relying primarily on formal documentation. What stakeholders might lack the authority or access to contribute to written project materials, yet possess critical knowledge about implementation challenges?</p>
+        </div>
+    </div>
+
+    <!-- Slide 2: Project Charter Development and Function -->
+    <div class="slide hidden" id="slide-2">
+        <h2>Project Charter Development and Function</h2>
+        <ul>
+            <li>Charter serves dual function as communication tool and governance mechanism</li>
+            <li>Project summary translates complex organizational objectives into clear, actionable statements</li>
+            <li>Scope definition creates shared boundaries distinguishing included work from excluded activities</li>
+            <li>Success metrics enable objective evaluation and prevent subjective interpretation of outcomes</li>
+            <li>Charter establishes decision-making authority and resource allocation parameters for entire project lifecycle</li>
+        </ul>
+
+        <div class="learning-objectives">
+            <strong>Learning Objective:</strong>
+            <p>Create comprehensive project charters that serve as foundational alignment tools for stakeholder engagement and establish governance mechanisms for project execution.</p>
+        </div>
+
+        <div class="speaker-notes">
+            <strong>Speaker Notes:</strong>
+            <p>The project charter is the project manager's most powerful tool for preventing scope creep and maintaining stakeholder alignment. In workforce development contexts, charters must balance technical precision with accessibility for diverse audiences—executives need ROI justification, technical teams need deliverable specifications, and end users need clarity about how their work will change. A well-crafted charter becomes a reference point throughout the project: when stakeholders request scope changes, the PM returns to the charter to evaluate alignment with approved goals and constraints. This aligns with PMP's emphasis on initiating process group activities. In practice, invest time in collaborative charter development through stakeholder workshops rather than creating the document in isolation, as this builds buy-in and surfaces conflicting expectations before they become costly problems.</p>
+        </div>
+
+        <div class="discussion-q">
+            <strong>Discussion Question:</strong>
+            <p>Think about a project you've experienced that lacked a clear charter or foundational document. What challenges emerged during execution, and how might a comprehensive charter have prevented those issues?</p>
+        </div>
+
+        <div class="bias-check">
+            <strong>Bias Check:</strong>
+            <p>Who typically has input into project charters in your organization? Consider whether the charter development process excludes perspectives from frontline workers, customers, or other stakeholders who will be most directly affected by project deliverables.</p>
+        </div>
+    </div>
+
+    <!-- Slide 3: SMART Goals Framework -->
+    <div class="slide hidden" id="slide-3">
+        <h2>SMART Goals: Beyond Basic Compliance</h2>
+        <ul>
+            <li>Specificity prevents stakeholder misalignment by eliminating subjective interpretation of success</li>
+            <li>Measurability requires industry-specific metrics that provide meaningful performance context</li>
+            <li>Industry benchmarking transforms vague objectives into quantified, comparable outcomes</li>
+            <li>Research and domain knowledge enhance goal relevance and achievability</li>
+            <li>Collaborative definition workshops engage stakeholders in creating shared understanding of success criteria</li>
+        </ul>
+
+        <div class="learning-objectives">
+            <strong>Learning Objective:</strong>
+            <p>Transform broad project goals into SMART objectives using industry-standard methodologies and benchmarking techniques that create stakeholder alignment and enable objective progress measurement.</p>
+        </div>
+
+        <div class="speaker-notes">
+            <strong>Speaker Notes:</strong>
+            <p>SMART goals are not merely a compliance exercise but a strategic stakeholder management tool. When executives say they want "better customer experience," different stakeholders interpret this through their own priorities—IT may think about system response time, operations about wait times, and marketing about satisfaction scores. The PM's role is facilitating workshops where stakeholders collaboratively define what "better" means using measurable, industry-standard metrics. For restaurant projects, this might mean table turnover rate or average check amount; for healthcare, it might be patient satisfaction scores or appointment wait times. This process surfaces conflicting expectations before resources are committed. From a PMP perspective, this supports scope baseline development and creates the foundation for earned value management. Learners should develop the habit of researching industry benchmarks for every project, as this provides objective criteria for goal-setting and stakeholder negotiation.</p>
+        </div>
+
+        <div class="discussion-q">
+            <strong>Discussion Question:</strong>
+            <p>Describe a project goal you've encountered that used vague language like "improved," "enhanced," or "better." How did different stakeholders interpret that goal differently, and what conflicts or inefficiencies resulted?</p>
+        </div>
+
+        <div class="bias-check">
+            <strong>Bias Check:</strong>
+            <p>Consider whether the metrics and benchmarks used to define SMART goals reflect the values and priorities of all stakeholders, or primarily those in positions of authority. Whose definition of "success" might be excluded by focusing solely on quantifiable, industry-standard measures?</p>
+        </div>
+    </div>
+
+    <!-- Slide 4: Stakeholder Management - Psychology Meets Strategy -->
+    <div class="slide hidden" id="slide-4">
+        <h2>Stakeholder Management: Psychology Meets Strategy</h2>
+        <ul>
+            <li>Multi-dimensional analysis examines power, interest, communication preferences, and risk tolerance</li>
+            <li>Power-interest grid prioritizes engagement strategies based on influence and investment levels</li>
+            <li>High power/high interest stakeholders require intensive engagement and frequent communication</li>
+            <li>Psychological motivations and informal influence networks often supersede formal authority structures</li>
+            <li>Stakeholder analysis is continuous process requiring monitoring for changed circumstances and relationships</li>
+        </ul>
+
+        <div class="learning-objectives">
+            <strong>Learning Objective:</strong>
+            <p>Conduct stakeholder analysis using power-interest grids to inform negotiation strategies while understanding psychological motivations and communication preferences that influence stakeholder behavior.</p>
+        </div>
+
+        <div class="speaker-notes">
+            <strong>Speaker Notes:</strong>
+            <p>Effective stakeholder management requires understanding the gap between formal organizational structures and actual influence networks. A department head may have high formal authority but low interest in your project, while a frontline supervisor may have significant informal influence with end users. The power-interest grid helps prioritize limited engagement time, but successful PMs go deeper—understanding individual stakeholders' risk tolerance, preferred communication styles, and underlying motivations. For example, a CFO's stated concern about budget may mask deeper anxiety about career implications if the project fails. In workforce settings, this psychological awareness enables PMs to frame communications and proposals in ways that address stakeholders' actual concerns. This aligns with PMP's emphasis on emotional intelligence and stakeholder engagement planning. Develop detailed stakeholder profiles that document not just power and interest, but communication preferences, decision-making styles, and potential sources of resistance.</p>
+        </div>
+
+        <div class="discussion-q">
+            <strong>Discussion Question:</strong>
+            <p>Identify a stakeholder from a past project whose informal influence exceeded their formal authority. How did understanding their actual influence network improve (or could have improved) your stakeholder engagement approach?</p>
+        </div>
+
+        <div class="bias-check">
+            <strong>Bias Check - Ethical Consideration:</strong>
+            <p>When analyzing psychological motivations and power dynamics, project managers must consider the ethical implications of influence strategies. Are you using stakeholder analysis to create mutually beneficial outcomes, or to manipulate individuals toward predetermined conclusions? Consider how power imbalances might silence dissenting voices that could identify project risks. Whose psychological needs and motivations receive analysis and accommodation, and whose are dismissed or overlooked? Ethical stakeholder management requires transparency about influence strategies and genuine openness to stakeholder concerns that may challenge project assumptions.</p>
+        </div>
+    </div>
+
+    <!-- Slide 5: Negotiation Skills in Project Management -->
+    <div class="slide hidden" id="slide-5">
+        <h2>Negotiation Skills in Project Management Context</h2>
+        <ul>
+            <li>Collaborative negotiation focuses on mutual benefit rather than zero-sum competition</li>
+            <li>Interest-based problem solving addresses underlying needs instead of stated positions</li>
+            <li>Conger's influence model: establish credibility, frame common ground, provide evidence, connect emotionally</li>
+            <li>Coalition building creates networks of influence that extend beyond individual authority</li>
+            <li>Preparation through stakeholder understanding enables creative solution development</li>
+        </ul>
+
+        <div class="learning-objectives">
+            <strong>Learning Objective:</strong>
+            <p>Apply effective negotiation techniques to achieve mutually beneficial outcomes while maintaining project scope and timeline integrity, and demonstrate coalition-building skills to leverage stakeholder influence.</p>
+        </div>
+
+        <div class="speaker-notes">
+            <strong>Speaker Notes:</strong>
+            <p>Project managers negotiate constantly—for resources, timeline extensions, scope changes, and stakeholder buy-in. Effective negotiation in organizational contexts requires shifting from positional bargaining ("I need three more developers") to interest-based problem solving ("We need to accelerate delivery to meet the market window—what options exist?"). This approach, aligned with PMP's conflict resolution and problem-solving competencies, creates space for creative solutions. For example, if a stakeholder resists a project timeline, exploring their underlying interest might reveal concerns about team capacity, which could be addressed through phased delivery or training rather than timeline extension. Coalition building amplifies the PM's influence by identifying stakeholders whose support can sway undecided parties. In workforce development, this might mean engaging respected informal leaders who can champion the project with skeptical frontline workers. Practice the four-step influence model systematically, documenting how you'll establish credibility with each key stakeholder.</p>
+        </div>
+
+        <div class="discussion-q">
+            <strong>Discussion Question:</strong>
+            <p>Recall a project negotiation that became adversarial or reached an impasse. If you had focused on underlying interests rather than stated positions, what alternative solutions might have emerged?</p>
+        </div>
+
+        <div class="bias-check">
+            <strong>Bias Check:</strong>
+            <p>Consider how power imbalances affect negotiation dynamics. Whose interests are typically prioritized in project negotiations—those with formal authority, or those most affected by project outcomes? How might collaborative negotiation frameworks still marginalize stakeholders who lack confidence, communication skills, or cultural capital to advocate effectively for their needs?</p>
+        </div>
+    </div>
+
+    <!-- Slide 6: Sauce and Spoon Case Study & Key Takeaways -->
+    <div class="slide hidden" id="slide-6">
+        <h2>Practical Application & Key Takeaways</h2>
+        <ul>
+            <li>Project initiation quality directly determines execution success and prevents costly scope changes</li>
+            <li>Technical competency must combine with emotional intelligence and political awareness</li>
+            <li>Effective negotiation treats stakeholder conflicts as collaborative problem-solving opportunities</li>
+            <li>Industry knowledge enhances PM effectiveness through relevant metrics and contextual understanding</li>
+            <li>Documentation serves simultaneously as communication tool, decision aid, and governance mechanism</li>
+        </ul>
+
+        <div class="learning-objectives">
+            <strong>Learning Objective:</strong>
+            <p>Demonstrate integrated application of strategic thinking, charter development, SMART goals, stakeholder analysis, and negotiation skills through realistic project scenarios that reflect workforce development contexts.</p>
+        </div>
+
+        <div class="speaker-notes">
+            <strong>Speaker Notes:</strong>
+            <p>The Sauce and Spoon tablet rollout exemplifies how restaurant industry projects mirror challenges across all sectors: technology implementation affecting traditional workflows, customer experience concerns, staff resistance to change, and financial justification requirements. This case demonstrates why PMs need industry-specific knowledge—understanding table turnover rates and prime cost calculations enables more credible stakeholder communication and realistic goal-setting. The scenario's complexity—disagreeing stakeholders, scope change requests, resource constraints—reflects authentic project environments where technical skills alone are insufficient. Successful PMs develop pattern recognition across these elements: recognizing when stakeholder resistance signals underlying concerns about job security, when scope requests reflect inadequate requirements gathering, when timeline pressure indicates unrealistic executive expectations. These competencies develop through reflective practice: systematically analyzing what worked, what failed, and why. Encourage learners to maintain a project journal documenting stakeholder dynamics and decision outcomes for future reference.</p>
+        </div>
+
+        <div class="discussion-q">
+            <strong>Discussion Question:</strong>
+            <p>Reflecting on this module's frameworks and the Sauce and Spoon case study, identify one specific practice (stakeholder analysis, SMART goal development, charter creation, or negotiation technique) that you will implement in your next project. How will you measure whether this practice improves project outcomes?</p>
+        </div>
+
+        <div class="bias-check">
+            <strong>Bias Check:</strong>
+            <p>Consider how the Sauce and Spoon case study represents certain organizational contexts while potentially excluding others. What perspectives or stakeholder groups common in your industry might be absent from this restaurant-focused scenario? How might project management frameworks need adaptation to address the specific power dynamics, cultural contexts, or equity considerations of your professional environment?</p>
+        </div>
+    </div>
+
+    <!-- Navigation Controls -->
+    <div class="nav-controls">
+        <button onclick="previousSlide()">Previous</button>
+        <button onclick="nextSlide()">Next</button>
+        <button onclick="toggleNotes()">Toggle Notes</button>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = document.querySelectorAll('.slide').length;
+        let notesVisible = false;
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+            if (n > totalSlides) currentSlide = 1;
+            if (n < 1) currentSlide = totalSlides;
+
+            slides.forEach((slide, index) => {
+                if (index + 1 === currentSlide) {
+                    slide.classList.remove('hidden');
+                } else {
+                    slide.classList.add('hidden');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide++;
+            showSlide(currentSlide);
+        }
+
+        function previousSlide() {
+            currentSlide--;
+            showSlide(currentSlide);
+        }
+
+        function toggleNotes() {
+            notesVisible = !notesVisible;
+            const objectives = document.querySelectorAll('.learning-objectives');
+            const notes = document.querySelectorAll('.speaker-notes');
+            const discussions = document.querySelectorAll('.discussion-q');
+            const biasChecks = document.querySelectorAll('.bias-check');
+
+            objectives.forEach(obj => {
+                obj.style.display = notesVisible ? 'block' : 'none';
+            });
+
+            notes.forEach(note => {
+                note.style.display = notesVisible ? 'block' : 'none';
+            });
+
+            discussions.forEach(disc => {
+                disc.style.display = notesVisible ? 'block' : 'none';
+            });
+
+            biasChecks.forEach(bias => {
+                bias.style.display = notesVisible ? 'block' : 'none';
+            });
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                previousSlide();
+            } else if (e.key === 'n' || e.key === 'N') {
+                toggleNotes();
+            }
+        });
+    </script>
+</body>
+</html>
